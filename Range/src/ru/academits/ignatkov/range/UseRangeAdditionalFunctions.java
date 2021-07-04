@@ -14,6 +14,7 @@ public class UseRangeAdditionalFunctions {
 
         intersectionRanges(range1, range2);
         combineRanges(range1, range2);
+        subtractRanges(range1, range2);
     }
 
     public static void intersectionRanges(Range range1, Range range2) {
@@ -22,11 +23,29 @@ public class UseRangeAdditionalFunctions {
         if (intersectionRange == null) {
             System.out.println("Интервалы не перескаются");
         } else {
-            System.out.println("Границы нового интервала [" + intersectionRange.getFrom() + ", " + intersectionRange.getTo() + "]");
+            System.out.println("Границы интервала после пересечения " + intersectionRange);
         }
     }
 
     public static void combineRanges(Range range1, Range range2) {
-        System.out.println("Объединенные интервалы: " + Arrays.toString(range1.getCombineRanges(range2)));
+        Range[] combinedRanges = range1.getCombineRanges(range2);
+
+        if (combinedRanges[1] == null) {
+            System.out.println("Интервал, полученный после объединиения: " + combinedRanges[0]);
+        } else {
+            System.out.println("Интервалы, полученный после объединиения: " + Arrays.toString(combinedRanges));
+        }
+    }
+
+    public static void subtractRanges(Range range1, Range range2) {
+        Range[] subtractedRanges = range1.getSubtractionRanges(range2);
+
+        if (subtractedRanges[0] == null && subtractedRanges[1] == null) {
+            System.out.println("После вычитания интервалов нет");
+        } else if (subtractedRanges[1] == null) {
+            System.out.println("После вычитания получился интервал: " + subtractedRanges[0]);
+        } else {
+            System.out.println("После вычитания получились интервалы: " + Arrays.toString(subtractedRanges));
+        }
     }
 }

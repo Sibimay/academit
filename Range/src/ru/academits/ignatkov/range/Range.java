@@ -81,6 +81,36 @@ public class Range {
         return ranges;
     }
 
+    public Range[] getSubtractionRanges(Range anotherRange) {
+        double anotherRangeFrom = anotherRange.getFrom();
+        double anotherRangeTo = anotherRange.getTo();
+        Range[] ranges = new Range[2];
+
+        if ((from == anotherRangeFrom && to == anotherRangeTo) || (anotherRange.isInside(from) && anotherRange.isInside(to))) {
+            return ranges;
+        }
+
+        if (this.isInside(anotherRangeFrom) && to == anotherRangeTo) {
+            ranges[0] = new Range(from, anotherRangeFrom);
+        } else if (this.isInside(anotherRangeTo) && from == anotherRangeFrom) {
+            ranges[0] = new Range(anotherRangeTo, to);
+        } else if (this.isInside(anotherRangeFrom) && this.isInside(anotherRangeTo)) {
+            ranges[0] = new Range(from, anotherRangeFrom);
+            ranges[1] = new Range(anotherRangeTo, to);
+        } else if (this.isInside(anotherRangeFrom)) {
+            ranges[0] = new Range(from, anotherRangeFrom);
+            ranges[1] = new Range(to, anotherRangeTo);
+        } else if (this.isInside(anotherRangeTo)) {
+            ranges[0] = new Range(anotherRangeFrom, from);
+            ranges[1] = new Range(anotherRangeTo, to);
+        } else {
+            ranges[0] = this;
+            ranges[1] = anotherRange;
+        }
+
+        return ranges;
+    }
+
     @Override
     public String toString() {
         return "[" + getFrom() + ", " + getTo() + "]";
