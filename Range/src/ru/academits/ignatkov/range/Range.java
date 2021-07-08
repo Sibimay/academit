@@ -4,7 +4,7 @@ public class Range {
     private double from;
     private double to;
 
-    Range(double from, double to) {
+    public Range(double from, double to) {
         this.from = from;
         this.to = to;
     }
@@ -13,12 +13,12 @@ public class Range {
         return from;
     }
 
-    public double getTo() {
-        return to;
-    }
-
     public void setFrom(double from) {
         this.from = from;
+    }
+
+    public double getTo() {
+        return to;
     }
 
     public void setTo(double to) {
@@ -30,89 +30,59 @@ public class Range {
     }
 
     public boolean isInside(double point) {
-        return point - from >= 0 && to - point >= 0;
+        return point >= from && to >= point;
     }
 
-    public Range getIntersectionRange(Range anotherRange) {
-        double anotherRangeFrom = anotherRange.getFrom();
-        double anotherRangeTo = anotherRange.getTo();
-        double intersectionRangeFromNumber;
-        double intersectionRangeToNumber;
-
-        if (to == anotherRangeFrom || to < anotherRangeFrom || from > anotherRangeTo) {
+    public Range getIntersection(Range range) {
+        if (to == range.from || from == range.to || to < range.from || from > range.to) {
             return null;
         }
 
-        if (this.isInside(anotherRangeFrom) && this.isInside(anotherRangeTo)) {
-            intersectionRangeFromNumber = anotherRangeFrom;
-            intersectionRangeToNumber = anotherRangeTo;
-        } else if (this.isInside(anotherRangeFrom)) {
-            intersectionRangeFromNumber = anotherRangeFrom;
-            intersectionRangeToNumber = to;
-        } else if (this.isInside(anotherRangeTo)) {
-            intersectionRangeFromNumber = from;
-            intersectionRangeToNumber = anotherRangeTo;
-        } else {
-            intersectionRangeFromNumber = from;
-            intersectionRangeToNumber = to;
-        }
-
-        return new Range(intersectionRangeFromNumber, intersectionRangeToNumber);
+        return new Range(Math.max(from, range.from), Math.min(to, range.to));
     }
 
-    public Range[] getCombineRanges(Range anotherRange) {
-        double anotherRangeFrom = anotherRange.getFrom();
-        double anotherRangeTo = anotherRange.getTo();
-        Range[] ranges = new Range[2];
-
-        if (this.isInside(anotherRangeFrom) && this.isInside(anotherRangeTo)) {
-            ranges[0] = new Range(from, to);
-        } else if (anotherRange.isInside(from) && anotherRange.isInside(to)) {
-            ranges[0] = new Range(anotherRangeFrom, anotherRangeTo);
-        } else if (this.isInside(anotherRangeFrom)) {
-            ranges[0] = new Range(from, anotherRangeTo);
-        } else if (anotherRange.isInside(from)) {
-            ranges[0] = new Range(anotherRangeFrom, to);
-        } else {
-            ranges[0] = this;
-            ranges[1] = anotherRange;
+    public Range[] getUnion(Range range) {
+        if ((range.isInside(from) || range.isInside(to)) || (this.isInside(range.from) || this.isInside(range.to))) {
+            return new Range[]{new Range(Math.min(from, range.from), Math.max(to, range.to))};
         }
 
-        return ranges;
+        return new Range[]{new Range(from, to), new Range(range.from, range.to)};
     }
 
-    public Range[] getSubtractionRanges(Range anotherRange) {
-        double anotherRangeFrom = anotherRange.getFrom();
-        double anotherRangeTo = anotherRange.getTo();
-        Range[] ranges = new Range[2];
-
-        if ((from == anotherRangeFrom && to == anotherRangeTo) || (anotherRange.isInside(from) && anotherRange.isInside(to))) {
-            return ranges;
+    public Range[] getDifference(Range range) {
+        if (from == range.from && to == range.to) {
+            return new Range[]{};
         }
 
-        if (this.isInside(anotherRangeFrom) && to == anotherRangeTo) {
-            ranges[0] = new Range(from, anotherRangeFrom);
-        } else if (this.isInside(anotherRangeTo) && from == anotherRangeFrom) {
-            ranges[0] = new Range(anotherRangeTo, to);
-        } else if (this.isInside(anotherRangeFrom) && this.isInside(anotherRangeTo)) {
-            ranges[0] = new Range(from, anotherRangeFrom);
-            ranges[1] = new Range(anotherRangeTo, to);
-        } else if (this.isInside(anotherRangeFrom)) {
-            ranges[0] = new Range(from, anotherRangeFrom);
-            ranges[1] = new Range(to, anotherRangeTo);
-        } else if (this.isInside(anotherRangeTo)) {
-            ranges[0] = new Range(anotherRangeFrom, from);
-            ranges[1] = new Range(anotherRangeTo, to);
-        } else {
-            ranges[0] = this;
-            ranges[1] = anotherRange;
+        if (range.isInside(from) && range.isInside(to)) {
+            return new Range[]{new Range(from, to)};
         }
 
-        return ranges;
+        if (this.isInside(range.from) && to == range.to) {
+            return new Range[]{new Range(from, range.from)};
+        }
+
+        if (this.isInside(range.to) && from == range.from) {
+            return new Range[]{new Range(range.to, to)};
+        }
+
+        if (this.isInside(range.from) && this.isInside(range.to)) {
+            return new Range[]{new Range(from, range.from), new Range(range.to, to)};
+        }
+
+        if (this.isInside(range.from)) {
+            return new Range[]{new Range(from, range.from), new Range(to, range.to)};
+        }
+
+        if (this.isInside(range.to)) {
+            return new Range[]{new Range(range.from, from), new Range(range.to, to)};
+        }
+
+        return new Range[]{new Range(from, to), new Range(range.from, range.to)};
     }
 
     @Override
     public String toString() {
-        return "[" + getFrom() + ", " + getTo() + "]";
+        return "(" + from + "; " + to + ")";
     }
 }

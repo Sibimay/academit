@@ -4,7 +4,8 @@
     <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Range/src/ru/academits/ignatkov/range/Range.java" beforeDir="false" afterPath="$PROJECT_DIR$/Range/src/ru/academits/ignatkov/range/Range.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Range/src/ru/academits/ignatkov/range/UseRangeAdditionalFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/Range/src/ru/academits/ignatkov/range/UseRangeAdditionalFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Range/src/ru/academits/ignatkov/range/UseRange.java" beforeDir="false" afterPath="$PROJECT_DIR$/Range/src/ru/academits/ignatkov/main/RangeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Range/src/ru/academits/ignatkov/range/UseRangeAdditionalFunctions.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,13 +48,13 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
-  <component name="RunManager" selected="Application.UseRangeAdditionalFunctions">
-    <configuration name="UseRange" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.range.UseRange" />
+  <component name="RunManager" selected="Application.RangeTest">
+    <configuration name="RangeTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.main.RangeTest" />
       <module name="Range" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.academits.ignatkov.range.*" />
+          <option name="PATTERN" value="ru.academits.ignatkov.main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -66,7 +67,7 @@
       <module name="Range" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.academits.ignatkov.range.*" />
+          <option name="PATTERN" value="ru.academits.ignatkov.main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -76,8 +77,8 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.RangeTest" />
         <item itemvalue="Application.UseRangeAdditionalFunctions" />
-        <item itemvalue="Application.UseRange" />
       </list>
     </recent_temporary>
   </component>
