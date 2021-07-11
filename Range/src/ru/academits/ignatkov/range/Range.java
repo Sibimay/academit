@@ -71,6 +71,6 @@ public class Range {
 
     @Override
     public String toString() {
-        return String.format("(%f; %f)%n", from, to);
+        return String.format("(%f; %f)", from, to);
     }
 }
