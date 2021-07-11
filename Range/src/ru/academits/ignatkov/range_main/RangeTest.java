@@ -1,4 +1,4 @@
-package ru.academits.ignatkov.main;
+package ru.academits.ignatkov.range_main;
 
 import ru.academits.ignatkov.range.Range;
 
@@ -25,21 +25,21 @@ public class RangeTest {
         System.out.printf("Введенное число %f " + (range.isInside(enteredNumber) ? "" : "не ") + "в диапазоне от %f до %f%n",
                 enteredNumber, from, to);
 
-        double changedRangeFromNumber = -1.4;
-        double changedRangeToNumber = 10.23;
-        range.setFrom(changedRangeFromNumber);
-        range.setTo(changedRangeToNumber);
+        double changedRangeFrom = -1.4;
+        double changedRangeTo = 10.23;
+        range.setFrom(changedRangeFrom);
+        range.setTo(changedRangeTo);
 
         System.out.printf("Границы диапазона изменились. Число %f " + (range.isInside(enteredNumber) ? "" : "не ")
-                + "попадает в диапазон от %f до %f%n", enteredNumber, changedRangeFromNumber, changedRangeToNumber);
+                + "попадает в диапазон от %f до %f%n", enteredNumber, changedRangeFrom, changedRangeTo);
 
         // Range часть 2
-        double from1 = 2;
-        double to1 = 3;
+        double from1 = 1;
+        double to1 = 5;
         Range range1 = new Range(from1, to1);
 
-        double from2 = 1;
-        double to2 = 6;
+        double from2 = 3;
+        double to2 = 7;
         Range range2 = new Range(from2, to2);
 
         printRangesIntersection(range1, range2);
@@ -68,14 +68,14 @@ public class RangeTest {
     }
 
     public static void printRangesDifference(Range range1, Range range2) {
-        Range[] rangesDiffernce = range1.getDifference(range2);
+        Range[] rangesDifference = range1.getDifference(range2);
 
-        if (rangesDiffernce.length == 0) {
+        if (rangesDifference.length == 0) {
             System.out.println("После вычитания интервалов нет");
-        } else if (rangesDiffernce.length == 1) {
-            System.out.println("После вычитания получился интервал: " + rangesDiffernce[0]);
+        } else if (rangesDifference.length == 1) {
+            System.out.println("После вычитания получился интервал: " + rangesDifference[0]);
         } else {
-            System.out.println("После вычитания получились интервалы: " + Arrays.toString(rangesDiffernce));
+            System.out.println("После вычитания получились интервалы: " + Arrays.toString(rangesDifference));
         }
     }
 }

@@ -2,15 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Shapes/Shapes.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes/Circle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes/Rectangle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes/Shape.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes/Square.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes/Triangle.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes_main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Range/src/ru/academits/ignatkov/main/RangeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Range/src/ru/academits/ignatkov/range_main/RangeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Range/src/ru/academits/ignatkov/range/Range.java" beforeDir="false" afterPath="$PROJECT_DIR$/Range/src/ru/academits/ignatkov/range/Range.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +48,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
-  <component name="RunManager" selected="Application.Main">
+  <component name="RunManager" selected="Application.RangeTest">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.shapes_main.Main" />
       <module name="Shapes" />
@@ -69,11 +63,11 @@
       </method>
     </configuration>
     <configuration name="RangeTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.main.RangeTest" />
+      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.range_main.RangeTest" />
       <module name="Range" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.academits.ignatkov.main.*" />
+          <option name="PATTERN" value="ru.academits.ignatkov.range_main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -86,7 +80,7 @@
       <module name="Range" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.academits.ignatkov.main.*" />
+          <option name="PATTERN" value="ru.academits.ignatkov.range_main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -96,8 +90,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.RangeTest" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.UseRangeAdditionalFunctions" />
       </list>
     </recent_temporary>
