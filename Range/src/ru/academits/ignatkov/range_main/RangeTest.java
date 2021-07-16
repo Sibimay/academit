@@ -8,43 +8,43 @@ import java.util.Scanner;
 public class RangeTest {
     public static void main(String[] args) {
         // Range часть 1
-        double from = 1.2;
-        double to = 5.3;
+        double from1 = 1.2;
+        double to1 = 5.3;
 
-        Range range = new Range(from, to);
+        Range range1 = new Range(from1, to1);
 
-        System.out.println("Начальная точка диапазона = " + range.getFrom());
-        System.out.println("Конечная точка диапазона = " + range.getTo());
+        System.out.println("Начальная точка диапазона = " + range1.getFrom());
+        System.out.println("Конечная точка диапазона = " + range1.getTo());
 
-        System.out.println("Длина диапазона - " + range.getLength());
+        System.out.println("Длина диапазона - " + range1.getLength());
 
         Scanner scanner = new Scanner(System.in);
         System.out.println("Введите число, чтобы проверить, попадает ли оно в диапазон:");
         double enteredNumber = scanner.nextDouble();
 
-        System.out.printf("Введенное число %f " + (range.isInside(enteredNumber) ? "" : "не ") + "в диапазоне от %f до %f%n",
-                enteredNumber, from, to);
+        System.out.printf("Введенное число %f " + (range1.isInside(enteredNumber) ? "" : "не ") + "в диапазоне от %f до %f%n",
+                enteredNumber, from1, to1);
 
         double changedRangeFrom = -1.4;
         double changedRangeTo = 10.23;
-        range.setFrom(changedRangeFrom);
-        range.setTo(changedRangeTo);
+        range1.setFrom(changedRangeFrom);
+        range1.setTo(changedRangeTo);
 
-        System.out.printf("Границы диапазона изменились. Число %f " + (range.isInside(enteredNumber) ? "" : "не ")
+        System.out.printf("Границы диапазона изменились. Число %f " + (range1.isInside(enteredNumber) ? "" : "не ")
                 + "попадает в диапазон от %f до %f%n", enteredNumber, changedRangeFrom, changedRangeTo);
 
         // Range часть 2
-        double from1 = 1;
-        double to1 = 5;
-        Range range1 = new Range(from1, to1);
-
         double from2 = 3;
         double to2 = 7;
         Range range2 = new Range(from2, to2);
 
-        printRangesIntersection(range1, range2);
-        printRangesUnion(range1, range2);
-        printRangesDifference(range1, range2);
+        double from3 = 1;
+        double to3 = 5;
+        Range range3 = new Range(from3, to3);
+
+        printRangesIntersection(range2, range3);
+        printRangesUnion(range2, range3);
+        printRangesDifference(range2, range3);
     }
 
     public static void printRangesIntersection(Range range1, Range range2) {

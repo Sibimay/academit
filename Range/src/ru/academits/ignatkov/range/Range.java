@@ -42,31 +42,34 @@ public class Range {
     }
 
     public Range[] getUnion(Range range) {
-        if (range.from <= from && range.to >= from) {
-            return new Range[]{new Range(range.from, Math.max(range.to, to))};
+        if (to < range.from || range.to < from) {
+            return new Range[]{new Range(from, to), new Range(range.from, range.to)};
         }
 
-        if (range.from >= from && to >= range.from) {
-            return new Range[]{new Range(from, Math.max(range.to, to))};
-        }
-
-        return new Range[]{new Range(from, to), new Range(range.from, range.to)};
+        return new Range[]{new Range(Math.min(from, range.from), Math.max(to, range.to))};
     }
 
     public Range[] getDifference(Range range) {
-        if (from < range.from && to >= range.from) {
-            return new Range[]{new Range(from, range.from)};
-        }
-
-        if (range.from >= to || from >= range.to) {
+        if (to <= range.from || range.to <= from) {
             return new Range[]{new Range(from, to)};
         }
 
-        if (range.from <= from) {
+        double minTo = Math.min(to, range.to);
+        double maxFrom = Math.max(from, range.from);
+
+        if (maxFrom == from && minTo == to) {
             return new Range[]{};
         }
 
-        return new Range[]{new Range(from, to), new Range(range.from, range.to)};
+        if (maxFrom == from) {
+            return new Range[]{new Range(minTo, to)};
+        }
+
+        if (minTo == to) {
+            return new Range[]{new Range(from, maxFrom)};
+        }
+
+        return new Range[]{new Range(from, maxFrom), new Range(minTo, to)};
     }
 
     @Override

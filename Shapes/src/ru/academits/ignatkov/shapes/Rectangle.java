@@ -1,7 +1,5 @@
 package ru.academits.ignatkov.shapes;
 
-import java.util.Objects;
-
 public class Rectangle implements Shape {
     private final double height;
     private final double width;
@@ -28,7 +26,7 @@ public class Rectangle implements Shape {
 
     @Override
     public double getPerimeter() {
-        return height * 2 + width * 2;
+        return (height + width) * 2;
     }
 
     @Override
@@ -48,11 +46,11 @@ public class Rectangle implements Shape {
 
         Rectangle rectangle = (Rectangle) o;
 
-        return Double.compare(rectangle.height, height) == 0 && Double.compare(rectangle.width, width) == 0;
+        return rectangle.height == height && rectangle.width == width;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(height, width);
+        return (int) (height + width);
     }
 }

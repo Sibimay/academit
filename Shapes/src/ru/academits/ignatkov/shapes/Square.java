@@ -1,37 +1,39 @@
 package ru.academits.ignatkov.shapes;
 
-import java.util.Objects;
-
 public class Square implements Shape {
-    private final double height;
+    private final double sideLength;
 
-    public Square(double height) {
-        this.height = height;
+    public Square(double sideLength) {
+        this.sideLength = sideLength;
+    }
+
+    public double getSideLength() {
+        return sideLength;
     }
 
     @Override
     public double getWidth() {
-        return height;
+        return sideLength;
     }
 
     @Override
     public double getHeight() {
-        return height;
+        return sideLength;
     }
 
     @Override
     public double getArea() {
-        return height * height;
+        return sideLength * sideLength;
     }
 
     @Override
     public double getPerimeter() {
-        return height * 4;
+        return sideLength * 4;
     }
 
     @Override
     public String toString() {
-        return "Square {height=" + height + '}';
+        return "Square {sideLength=" + sideLength + '}';
     }
 
     @Override
@@ -46,11 +48,11 @@ public class Square implements Shape {
 
         Square square = (Square) o;
 
-        return Double.compare(square.height, height) == 0;
+        return square.sideLength == sideLength;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(height);
+        return (int) sideLength;
     }
 }
