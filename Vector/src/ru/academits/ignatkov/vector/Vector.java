@@ -89,6 +89,16 @@ public class Vector {
         multipleOnScalar(-1);
     }
 
+    public double getLength() {
+        double dimensionSquaresSum = 0;
+
+        for (int i = 0; i < dimension; i++) {
+            dimensionSquaresSum += components[i] * components[i];
+        }
+
+        return Math.sqrt(dimensionSquaresSum);
+    }
+
     public double getComponent(int index) {
         if (index < 0 || index > dimension) {
             throw new IllegalArgumentException("Индекс не может быть отрицательным " +
@@ -124,13 +134,12 @@ public class Vector {
 
     @Override
     public int hashCode() {
-        double componentsSum = 0;
+        final int prime = 31;
+        int hash = 1;
+        hash = prime * hash + dimension;
+        hash = prime * hash + Arrays.hashCode(components);
 
-        for (double component : components) {
-            componentsSum += component;
-        }
-
-        return (int) (dimension * componentsSum);
+        return hash;
     }
 
     public static Vector getVectorsSum(Vector vector1, Vector vector2) {
@@ -147,19 +156,18 @@ public class Vector {
         return differenceVector;
     }
 
-    public static Vector getVectorsScalarMultiplication(Vector vector1, Vector vector2) {
+    public static double getVectorsScalarMultiplication(Vector vector1, Vector vector2) {
         int maxSize = Math.max(vector1.dimension, vector2.dimension);
-        Vector resultVector = new Vector(maxSize);
+        double result = 0;
 
         for (int i = 0; i < maxSize; i++) {
             if (vector1.dimension <= i || vector2.dimension <= i) {
-                resultVector.components[i] = 0;
-                continue;
+                break;
             }
 
-            resultVector.components[i] = vector1.components[i] * vector2.components[i];
+            result += vector1.components[i] * vector2.components[i];
         }
 
-        return resultVector;
+        return result;
     }
 }

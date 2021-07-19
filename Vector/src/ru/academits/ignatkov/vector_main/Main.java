@@ -9,12 +9,39 @@ public class Main {
         Vector vector2 = new Vector(4, new double[]{3, 7, 3, 4});
 
         vector1.addVector(vector2);
-        System.out.println("После сложения векторов получился вектор " + vector1);
-
-        // Вернем первый вектор к изначальному состоянию
-        vector1 = new Vector(3, a);
+        System.out.println("Вектор после сложения: " + vector1);
 
         vector1.subtractVector(vector2);
-        System.out.println("После вычитания векторов получится вектор " + vector1);
+        System.out.println("Вектор после вычитания: " + vector1);
+
+        vector1.multipleOnScalar(7);
+        System.out.println("Вектор после умножения на скаляр: " + vector1);
+
+        vector1.reverse();
+        System.out.println("Вектор после разворота: " + vector1);
+
+        System.out.println("Длина вектора: " + vector1.getLength());
+
+        int index = 2;
+        System.out.printf("Компонента вектора %s с индексом %d равна %f%n", vector1, index, vector1.getComponent(index));
+
+        vector1.setComponent(2, 12);
+        System.out.printf("Теперь компонента вектора %s с индексом %d равна %f%n", vector1, index, vector1.getComponent(index));
+
+        Vector vector3 = new Vector(new double[]{3, -2, -5});
+        Vector vector4 = new Vector(vector2);
+
+        System.out.printf("Вектор %s %s вектору %s, но %s вектору %s%n", vector2,
+                vector2.equals(vector3) ? "равен" : "не равен", vector3,
+                vector2.equals(vector4) ? "равен" : "не равен", vector4);
+
+        System.out.printf("По хэш-коду векторы %s и %s %s%n", vector2, vector4,
+                vector2.hashCode() == vector4.hashCode() ? "равны" : "не равны");
+
+        System.out.printf("Сумма векторов %s и %s = %s%n", vector3, vector4, Vector.getVectorsSum(vector3, vector4));
+        System.out.printf("Разность векторов %s и %s = %s%n", vector3, vector4, Vector.getVectorsDifference(vector3, vector4));
+        System.out.printf("Скалярное произведение векторов %s и %s = %s%n", vector1, vector2,
+                Vector.getVectorsScalarMultiplication(vector1, vector2));
+
     }
 }
