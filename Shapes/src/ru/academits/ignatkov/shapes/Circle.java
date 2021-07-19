@@ -55,6 +55,6 @@ public class Circle implements Shape {
 
     @Override
     public int hashCode() {
-        return (int) radius;
+        return Double.hashCode(radius);
     }
 }

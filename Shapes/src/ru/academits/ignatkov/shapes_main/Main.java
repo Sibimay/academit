@@ -35,20 +35,35 @@ public class Main {
     }
 
     public static Shape getShapeWithMaxArea(Shape[] shapes) {
-        Arrays.sort(shapes, new ShapeComparatorByArea());
+        if (shapes.length <= 0) {
+            return null;
+        }
 
-        if (shapes.length > 0)
-            return shapes[shapes.length - 1];
+        if (shapes.length == 1) {
+            return shapes[0];
+        }
 
-        return null;
+        Arrays.sort(shapes, new ShapeByAreaComparator());
+
+        return shapes[shapes.length - 1];
+
     }
 
     public static Shape getShapeWithSecondPerimeter(Shape[] shapes) {
-        Arrays.sort(shapes, new ShapeComparatorByPerimeter());
+        if (shapes.length <= 1) {
+            return null;
+        }
 
-        if (shapes.length > 1)
-            return shapes[shapes.length - 2];
+        if (shapes.length == 2) {
+            if (shapes[0].getPerimeter() > shapes[1].getPerimeter()) {
+                return shapes[1];
+            }
 
-        return null;
+            return shapes[0];
+        }
+
+        Arrays.sort(shapes, new ShapeByPerimeterComparator());
+
+        return shapes[shapes.length - 2];
     }
 }

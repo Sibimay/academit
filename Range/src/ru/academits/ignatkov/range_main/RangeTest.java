@@ -34,13 +34,8 @@ public class RangeTest {
                 + "попадает в диапазон от %f до %f%n", enteredNumber, changedRangeFrom, changedRangeTo);
 
         // Range часть 2
-        double from2 = 3;
-        double to2 = 7;
-        Range range2 = new Range(from2, to2);
-
-        double from3 = 1;
-        double to3 = 5;
-        Range range3 = new Range(from3, to3);
+        Range range2 = new Range(3, 7);
+        Range range3 = new Range(1, 5);
 
         printRangesIntersection(range2, range3);
         printRangesUnion(range2, range3);

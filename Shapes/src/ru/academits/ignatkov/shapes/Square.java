@@ -33,7 +33,7 @@ public class Square implements Shape {
 
     @Override
     public String toString() {
-        return "Square {sideLength=" + sideLength + '}';
+        return "Square {sideLength = " + sideLength + '}';
     }
 
     @Override
@@ -53,6 +53,6 @@ public class Square implements Shape {
 
     @Override
     public int hashCode() {
-        return (int) sideLength;
+        return Double.hashCode(sideLength);
     }
 }

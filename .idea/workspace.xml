@@ -2,9 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes_main/ShapeByAreaComparator.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Range/src/ru/academits/ignatkov/range_main/RangeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/Range/src/ru/academits/ignatkov/range_main/RangeTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes/Circle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes/Rectangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes/Rectangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes/ShapeComparatorByArea.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes/ShapeComparatorByPerimeter.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes_main/ShapeByPerimeterComparator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes/Square.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes/Triangle.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes/Triangle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Shapes/src/ru/academits/ignatkov/shapes_main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vector/src/ru/academits/ignatkov/vector/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vector/src/ru/academits/ignatkov/vector/Vector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vector/src/ru/academits/ignatkov/vector_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vector/src/ru/academits/ignatkov/vector_main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -56,27 +56,25 @@ public class Vector {
     }
 
     public void addVector(Vector vector) {
-        Vector maxDimensionVector = dimension > vector.dimension ? this : vector;
-        Vector minDimensionVector = dimension > vector.dimension ? vector : this;
+        int maxSize = Math.max(dimension, vector.dimension);
 
-        if (this == minDimensionVector) {
+        if (dimension < maxSize) {
             components = Arrays.copyOf(components, vector.dimension);
         }
 
-        for (int i = 0; i < maxDimensionVector.dimension; i++) {
+        for (int i = 0; i < maxSize; i++) {
             components[i] += vector.components[i];
         }
     }
 
     public void subtractVector(Vector vector) {
-        Vector maxDimensionVector = dimension > vector.dimension ? this : vector;
-        Vector minDimensionVector = dimension > vector.dimension ? vector : this;
+        int maxSize = Math.max(dimension, vector.dimension);
 
-        if (this == minDimensionVector) {
+        if (dimension < maxSize) {
             components = Arrays.copyOf(components, vector.dimension);
         }
 
-        for (int i = 0; i < maxDimensionVector.dimension; i++) {
+        for (int i = 0; i < maxSize; i++) {
             components[i] -= vector.components[i];
         }
     }
@@ -136,24 +134,25 @@ public class Vector {
     }
 
     public static Vector getVectorsSum(Vector vector1, Vector vector2) {
-        vector1.addVector(vector2);
+        Vector sumVector = new Vector(vector1);
+        sumVector.addVector(vector2);
 
-        return new Vector(vector1);
+        return sumVector;
     }
 
     public static Vector getVectorsDifference(Vector vector1, Vector vector2) {
-        vector1.subtractVector(vector2);
+        Vector differenceVector = new Vector(vector1);
+        differenceVector.subtractVector(vector2);
 
-        return new Vector(vector1);
+        return differenceVector;
     }
 
     public static Vector getVectorsScalarMultiplication(Vector vector1, Vector vector2) {
-        Vector maxDimensionVector = vector1.dimension > vector2.dimension ? vector1 : vector2;
-        Vector minDimensionVector = vector1.dimension > vector2.dimension ? vector2 : vector1;
-        Vector resultVector = new Vector(maxDimensionVector);
+        int maxSize = Math.max(vector1.dimension, vector2.dimension);
+        Vector resultVector = new Vector(maxSize);
 
-        for (int i = 0; i < maxDimensionVector.dimension; i++) {
-            if (minDimensionVector.dimension <= i) {
+        for (int i = 0; i < maxSize; i++) {
+            if (vector1.dimension <= i || vector2.dimension <= i) {
                 resultVector.components[i] = 0;
                 continue;
             }
