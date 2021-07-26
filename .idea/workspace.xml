@@ -2,6 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Matrix/Matrix.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix/Matrix.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix_main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vector/src/ru/academits/ignatkov/vector/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vector/src/ru/academits/ignatkov/vector/Vector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Vector/src/ru/academits/ignatkov/vector_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vector/src/ru/academits/ignatkov/vector_main/Main.java" afterDir="false" />
@@ -60,6 +64,19 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ru.academits.ignatkov.shapes_main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.matrix_main.Main" />
+      <module name="Matrix" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.academits.ignatkov.matrix_main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -156,6 +173,7 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.RangeTest" />
         <item itemvalue="Application.UseRangeAdditionalFunctions" />

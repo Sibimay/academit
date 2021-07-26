@@ -4,17 +4,17 @@ import ru.academits.ignatkov.vector.Vector;
 
 public class Main {
     public static void main(String[] args) {
-        double[] a = {1, 2};
-        Vector vector1 = new Vector(3, a);
+        double[] vectorComponents = {1, 2};
+        Vector vector1 = new Vector(3, vectorComponents);
         Vector vector2 = new Vector(4, new double[]{3, 7, 3, 4});
 
-        vector1.addVector(vector2);
+        vector1.add(vector2);
         System.out.println("Вектор после сложения: " + vector1);
 
-        vector1.subtractVector(vector2);
+        vector1.subtract(vector2);
         System.out.println("Вектор после вычитания: " + vector1);
 
-        vector1.multipleOnScalar(7);
+        vector1.multiplyByScalar(7);
         System.out.println("Вектор после умножения на скаляр: " + vector1);
 
         vector1.reverse();
@@ -22,10 +22,10 @@ public class Main {
 
         System.out.println("Длина вектора: " + vector1.getLength());
 
-        int index = 2;
+        int index = 3;
         System.out.printf("Компонента вектора %s с индексом %d равна %f%n", vector1, index, vector1.getComponent(index));
 
-        vector1.setComponent(2, 12);
+        vector1.setComponent(index, 12);
         System.out.printf("Теперь компонента вектора %s с индексом %d равна %f%n", vector1, index, vector1.getComponent(index));
 
         Vector vector3 = new Vector(new double[]{3, -2, -5});
@@ -38,10 +38,9 @@ public class Main {
         System.out.printf("По хэш-коду векторы %s и %s %s%n", vector2, vector4,
                 vector2.hashCode() == vector4.hashCode() ? "равны" : "не равны");
 
-        System.out.printf("Сумма векторов %s и %s = %s%n", vector3, vector4, Vector.getVectorsSum(vector3, vector4));
-        System.out.printf("Разность векторов %s и %s = %s%n", vector3, vector4, Vector.getVectorsDifference(vector3, vector4));
+        System.out.printf("Сумма векторов %s и %s = %s%n", vector3, vector4, Vector.getSum(vector3, vector4));
+        System.out.printf("Разность векторов %s и %s = %s%n", vector3, vector4, Vector.getDifference(vector3, vector4));
         System.out.printf("Скалярное произведение векторов %s и %s = %s%n", vector1, vector2,
-                Vector.getVectorsScalarMultiplication(vector1, vector2));
-
+                Vector.getScalarProduct(vector1, vector2));
     }
 }
