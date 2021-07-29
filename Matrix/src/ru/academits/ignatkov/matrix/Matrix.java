@@ -174,7 +174,7 @@ public class Matrix {
     }
 
     public double getDeterminant() {
-        int rowsCount = elements.length;
+        int rowsCount = this.elements.length;
         int columnsCount = elements[0].getSize();
 
         if (rowsCount != columnsCount) {
@@ -182,26 +182,69 @@ public class Matrix {
                     "Размеры матрицы: " + rowsCount + "x" + columnsCount);
         }
 
-        System.out.println(getAlgebraicAddition(1,1));
+        if (rowsCount <= 2) {
+            System.out.println("HERE");
+            return getRowByIndex(0).getComponent(0) * getRowByIndex(1).getComponent(1) -
+                    getRowByIndex(0).getComponent(1) * getRowByIndex(1).getComponent(0);
+        }
 
-//        for (int i = 0; i < rowsCount; i++) {
-//            for (int j = 0; j < columnsCount; j++) {
-//                elements[i].getComponent(j) * Math.pow(-1, i + j + 2)
-//            }
-//        }
+        int rowNumber = 0;
+        int columnNumber = 0;
+        Vector row = getRowByIndex(rowNumber);
+        double rowSum = 0;
 
-        return 0;
+        for (int i = 0; i < row.getSize(); i++) {
+            rowSum += row.getComponent(i);
+        }
+
+        if (rowSum == 0) {
+            Vector column = getColumnByIndex(columnNumber);
+            for (int i = 0; i < column.getSize(); i++) {
+                rowSum += column.getComponent(i);
+            }
+        }
+
+
+        System.out.println("row sum " + rowSum);
+        double determinant = rowSum * getAlgebraicAddition(rowNumber, columnNumber).getDeterminant();
+
+        return determinant;
     }
 
     private Matrix getAlgebraicAddition(int row, int column) {
         int size = elements.length;
-        double[][] array = new double[size][size];
+        double[][] array = new double[size - 1][size - 1];
+
+        int k;
+        int n;
 
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
-                array[i][j] = getRowByIndex(i).getComponent(j);
+                if (i >= row) {
+                    k = i - 1;
+                } else {
+                    k = i;
+                }
+
+                if (j >= column) {
+                    n = j - 1;
+                } else {
+                    n = j;
+                }
+
+                if (i == row || j == column) {
+                    continue;
+                }
+
+                array[k][n] = getRowByIndex(i).getComponent(j);
             }
         }
+
+        System.out.println("Array");
+        for (double[] doubles : array) {
+            System.out.println(Arrays.toString(doubles));
+        }
+        System.out.println();
 
         return new Matrix(array);
     }

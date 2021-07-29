@@ -49,7 +49,7 @@ public class Vector {
             vector.components = Arrays.copyOf(vector.components, components.length);
         }
 
-        for (int i = 0; i < components.length - 1; i++) {
+        for (int i = 0; i < components.length; i++) {
             components[i] += vector.components[i];
         }
     }
@@ -61,7 +61,7 @@ public class Vector {
             vector.components = Arrays.copyOf(vector.components, components.length);
         }
 
-        for (int i = 0; i < components.length - 1; i++) {
+        for (int i = 0; i < components.length; i++) {
             components[i] -= vector.components[i];
         }
     }
