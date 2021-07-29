@@ -143,7 +143,7 @@ public class Matrix {
 
         Vector resultVector = new Vector(columnCount);
 
-        for (int i = 0; i < elements.length; i++) {
+        for (int i = 0; i < elements.length - 1; i++) {
             Vector row = getRowByIndex(i);
             resultVector.setComponent(i, row.getComponent(index));
         }
@@ -152,8 +152,60 @@ public class Matrix {
     }
 
     public void transpose() {
+        Vector[] resultVector = new Vector[elements[0].getSize()];
 
+        int columnsCount = elements[0].getSize();
+
+        for (int i = 0; i < columnsCount; i++) {
+            resultVector[i] = new Vector(elements.length);
+
+            for (int j = 0; j < elements.length; j++) {
+                resultVector[i].setComponent(j, elements[j].getComponent(i));
+            }
+        }
+
+        elements = Arrays.copyOf(resultVector, columnsCount);
     }
+
+    public void multiplyByScalar(double number) {
+        for (Vector element : elements) {
+            element.multiplyByScalar(number);
+        }
+    }
+
+    public double getDeterminant() {
+        int rowsCount = elements.length;
+        int columnsCount = elements[0].getSize();
+
+        if (rowsCount != columnsCount) {
+            throw new ArithmeticException("Нельзя вычислять определитель у прямоугольной матрицы. " +
+                    "Размеры матрицы: " + rowsCount + "x" + columnsCount);
+        }
+
+        System.out.println(getAlgebraicAddition(1,1));
+
+//        for (int i = 0; i < rowsCount; i++) {
+//            for (int j = 0; j < columnsCount; j++) {
+//                elements[i].getComponent(j) * Math.pow(-1, i + j + 2)
+//            }
+//        }
+
+        return 0;
+    }
+
+    private Matrix getAlgebraicAddition(int row, int column) {
+        int size = elements.length;
+        double[][] array = new double[size][size];
+
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                array[i][j] = getRowByIndex(i).getComponent(j);
+            }
+        }
+
+        return new Matrix(array);
+    }
+
 
     @Override
     public String toString() {
