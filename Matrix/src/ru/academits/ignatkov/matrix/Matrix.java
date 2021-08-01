@@ -52,8 +52,6 @@ public class Matrix {
         }
     }
 
-
-    //todo don't like it
     public Matrix(Vector[] vectors) {
         if (vectors.length == 0) {
             throw new IllegalArgumentException("Число элементов не может быть равно 0");
@@ -174,84 +172,121 @@ public class Matrix {
     }
 
     public double getDeterminant() {
-        int rowsCount = this.elements.length;
+        int rowsCount = elements.length;
         int columnsCount = elements[0].getSize();
 
-        if (rowsCount != columnsCount) {
-            throw new ArithmeticException("Нельзя вычислять определитель у прямоугольной матрицы. " +
-                    "Размеры матрицы: " + rowsCount + "x" + columnsCount);
+        if (columnsCount == 1) {
+            return elements[0].getComponent(0);
         }
 
-        if (rowsCount <= 2) {
-            System.out.println("HERE");
-            return getRowByIndex(0).getComponent(0) * getRowByIndex(1).getComponent(1) -
-                    getRowByIndex(0).getComponent(1) * getRowByIndex(1).getComponent(0);
+        if (columnsCount == 2) {
+            return elements[0].getComponent(0) * elements[1].getComponent(1) - elements[0].getComponent(1) * elements[1].getComponent(0);
         }
 
-        int rowNumber = 0;
-        int columnNumber = 0;
-        Vector row = getRowByIndex(rowNumber);
-        double rowSum = 0;
+        double det = 0;
 
-        for (int i = 0; i < row.getSize(); i++) {
-            rowSum += row.getComponent(i);
-        }
+        for (int i = 0; i < rowsCount; i++) {
+            double[][] algebraicComplement = new double[rowsCount - 1][columnsCount - 1];
 
-        if (rowSum == 0) {
-            Vector column = getColumnByIndex(columnNumber);
-            for (int i = 0; i < column.getSize(); i++) {
-                rowSum += column.getComponent(i);
+            for (int j = 1; j < rowsCount; j++) {
+                int complementColumnsCount = 0;
+
+                for (int k = 0; k < columnsCount; k++) {
+                    if (k == i) {
+                        continue;
+                    }
+
+                    algebraicComplement[j - 1][complementColumnsCount] = elements[j].getComponent(k);
+                    complementColumnsCount++;
+                }
             }
+
+            det += elements[0].getComponent(i) * (new Matrix(algebraicComplement)).getDeterminant() * Math.pow(-1, i);
         }
 
-
-        System.out.println("row sum " + rowSum);
-        double determinant = rowSum * getAlgebraicAddition(rowNumber, columnNumber).getDeterminant();
-
-        return determinant;
+        return det;
     }
-
-    private Matrix getAlgebraicAddition(int row, int column) {
-        int size = elements.length;
-        double[][] array = new double[size - 1][size - 1];
-
-        int k;
-        int n;
-
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if (i >= row) {
-                    k = i - 1;
-                } else {
-                    k = i;
-                }
-
-                if (j >= column) {
-                    n = j - 1;
-                } else {
-                    n = j;
-                }
-
-                if (i == row || j == column) {
-                    continue;
-                }
-
-                array[k][n] = getRowByIndex(i).getComponent(j);
-            }
-        }
-
-        System.out.println("Array");
-        for (double[] doubles : array) {
-            System.out.println(Arrays.toString(doubles));
-        }
-        System.out.println();
-
-        return new Matrix(array);
-    }
-
 
     @Override
     public String toString() {
         return Arrays.toString(elements).replace("[", "{").replace("]", "}");
+    }
+
+    public Vector multiplyByVector(Vector vector) {
+        if (vector.getSize() != getColumnsCount()) {
+            throw new IllegalArgumentException("Длина вектора должна равняться числу столбцов в матрице!");
+        }
+
+        double[] resultVector = new double[elements.length];
+
+        for (int i = 0; i < elements.length; i++) {
+            resultVector[i] = Vector.getScalarProduct(elements[i], vector);
+        }
+
+        return new Vector(resultVector);
+    }
+
+    public void add(Matrix matrix1) {
+        if (getColumnsCount() != matrix1.getColumnsCount() || elements.length != matrix1.elements.length) {
+            throw new IllegalArgumentException("Размеры матриц должны совпадать!");
+        }
+
+        for (int i = 0; i < elements.length; i++) {
+            elements[i].add(matrix1.elements[i]);
+        }
+    }
+
+    public void subtract(Matrix matrix1) {
+        if (getColumnsCount() != matrix1.getColumnsCount() || elements.length != matrix1.elements.length) {
+            throw new IllegalArgumentException("Размеры матриц должны совпадать!");
+        }
+
+        for (int i = 0; i < elements.length; i++) {
+            elements[i].subtract(matrix1.elements[i]);
+        }
+    }
+
+    public static Matrix getSum(Matrix matrix1, Matrix matrix2) {
+        if (matrix1.getColumnsCount() != matrix2.getColumnsCount() || matrix1.elements.length != matrix2.elements.length) {
+            throw new IllegalArgumentException("Размеры матриц должны совпадать!");
+        }
+
+        Matrix matrix = new Matrix(matrix1);
+        matrix.add(matrix2);
+
+        return matrix;
+    }
+
+    public static Matrix getDifference(Matrix matrix1, Matrix matrix2) {
+        if (matrix1.getColumnsCount() != matrix2.getColumnsCount() || matrix1.elements.length != matrix2.elements.length) {
+            throw new IllegalArgumentException("Размеры матриц должны совпадать!");
+        }
+
+        Matrix matrix = new Matrix(matrix1);
+        matrix.subtract(matrix2);
+
+        return matrix;
+    }
+
+    public static Matrix getProduct(Matrix matrix1, Matrix matrix2) {
+        int matrix1ColumnsCount = matrix1.getColumnsCount();
+
+        if (matrix1ColumnsCount != matrix2.elements.length) {
+            throw new IllegalArgumentException("Количество столбцов первой матрицы должно быть равны кол-ву строк втрой матрицы!");
+        }
+
+        int matrix2ColumnsCount = matrix2.getColumnsCount();
+
+        double[][] resultElements = new double[matrix1.elements.length][matrix2ColumnsCount];
+
+        for (int i = 0; i < matrix1.elements.length; i++) {
+            for (int j = 0; j < matrix2ColumnsCount; j++) {
+                for (int k = 0; k < matrix1ColumnsCount; k++) {
+                    resultElements[i][j] += matrix1.elements[i].getComponent(k) * matrix2.elements[k].getComponent(j);
+                }
+            }
+        }
+
+        return new Matrix(resultElements);
     }
 }
