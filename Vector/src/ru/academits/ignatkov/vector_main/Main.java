@@ -40,7 +40,6 @@ public class Main {
 
         System.out.printf("Сумма векторов %s и %s = %s%n", vector3, vector4, Vector.getSum(vector3, vector4));
         System.out.printf("Разность векторов %s и %s = %s%n", vector3, vector4, Vector.getDifference(vector3, vector4));
-        System.out.printf("Скалярное произведение векторов %s и %s = %s%n", vector1, vector2,
-                Vector.getScalarProduct(vector1, vector2));
+        System.out.printf("Скалярное произведение векторов %s и %s = %s%n", vector1, vector2, Vector.getScalarProduct(vector1, vector2));
     }
 }

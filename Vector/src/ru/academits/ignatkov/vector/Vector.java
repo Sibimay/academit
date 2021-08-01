@@ -19,7 +19,7 @@ public class Vector {
 
     public Vector(double[] components) {
         if (components.length == 0) {
-            throw new IllegalArgumentException("Длина массива должна быть больше 0. Переданная длина массива = " + components.length);
+            throw new IllegalArgumentException("Длина массива должна быть больше 0. Длина переданного массива = " + components.length);
         }
 
         this.components = Arrays.copyOf(components, components.length);
@@ -45,8 +45,6 @@ public class Vector {
     public void add(Vector vector) {
         if (components.length < vector.components.length) {
             components = Arrays.copyOf(components, vector.components.length);
-        } else if (vector.components.length < components.length) {
-            vector.components = Arrays.copyOf(vector.components, components.length);
         }
 
         for (int i = 0; i < components.length; i++) {
@@ -57,8 +55,6 @@ public class Vector {
     public void subtract(Vector vector) {
         if (components.length < vector.components.length) {
             components = Arrays.copyOf(components, vector.components.length);
-        } else if (vector.components.length < components.length) {
-            vector.components = Arrays.copyOf(vector.components, components.length);
         }
 
         for (int i = 0; i < components.length; i++) {
@@ -92,7 +88,7 @@ public class Vector {
         }
 
         if (index >= components.length) {
-            throw new IndexOutOfBoundsException("Индекс не может быть больше, чем размерность вектора. " +
+            throw new IndexOutOfBoundsException("Индекс не может быть больше или равен размерности вектора. " +
                     "Индекс = " + index + ", размерность вектора = " + components.length);
         }
 
@@ -105,7 +101,7 @@ public class Vector {
         }
 
         if (index >= components.length) {
-            throw new IndexOutOfBoundsException("Индекс не может быть больше, чем размерность вектора. " +
+            throw new IndexOutOfBoundsException("Индекс не может быть больше или равен размерности вектора. " +
                     "Индекс = " + index + ", размерность вектора = " + components.length);
         }
 
