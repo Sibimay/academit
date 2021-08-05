@@ -48,6 +48,10 @@ public class Vector {
         }
 
         for (int i = 0; i < components.length; i++) {
+            if (i >= vector.components.length) {
+                break;
+            }
+
             components[i] += vector.components[i];
         }
     }
@@ -58,6 +62,10 @@ public class Vector {
         }
 
         for (int i = 0; i < components.length; i++) {
+            if (i >= vector.components.length) {
+                break;
+            }
+
             components[i] -= vector.components[i];
         }
     }
