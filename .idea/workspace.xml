@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix/Matrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix_main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Vector/src/ru/academits/ignatkov/vector/Vector.java" beforeDir="false" afterPath="$PROJECT_DIR$/Vector/src/ru/academits/ignatkov/vector/Vector.java" afterDir="false" />
-    </list>
+    <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -54,7 +49,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
-  <component name="RunManager" selected="Application.Main (2)">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.shapes_main.Main" />
       <module name="Shapes" />
@@ -122,8 +117,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.RangeTest" />
         <item itemvalue="Application.UseRangeAdditionalFunctions" />
@@ -146,7 +141,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628148765770</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Fix Matrix and Vector">
+      <created>1628498605535</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1628498605535</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -170,7 +172,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Ranges.Add functions to find intersection and combine of ranges. Add class to test new functions" />
     <MESSAGE value="Fix method add and subtract" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fix method add and subtract" />
+    <MESSAGE value="Fix Matrix and Vector" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix Matrix and Vector" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

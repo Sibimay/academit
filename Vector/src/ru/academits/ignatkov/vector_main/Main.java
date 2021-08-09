@@ -5,7 +5,7 @@ import ru.academits.ignatkov.vector.Vector;
 public class Main {
     public static void main(String[] args) {
         double[] vectorComponents = {1, 2, 3, 4, 5};
-        Vector vector1 = new Vector(5, vectorComponents);
+        Vector vector1 = new Vector(3, vectorComponents);
         Vector vector2 = new Vector(4, new double[]{3, 7, 3, 4});
 
         vector1.add(vector2);
