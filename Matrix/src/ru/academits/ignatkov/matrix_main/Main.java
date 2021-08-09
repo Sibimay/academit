@@ -30,9 +30,9 @@ public class Main {
         Vector vector4 = new Vector(elements1);
         matrix2.setRowByIndex(2, vector4);
 
-        System.out.println("matrix2 до траспортирования: " + matrix2);
+        System.out.println("matrix2 до траснпонирования: " + matrix2);
         matrix2.transpose();
-        System.out.println("matrix2 после траспортирования: " + matrix2);
+        System.out.println("matrix2 после траснпонирования: " + matrix2);
 
         vector3 = matrix2.getColumnByIndex(1);
         System.out.println("Вектора-столбец по индексу 1: " + vector3);
