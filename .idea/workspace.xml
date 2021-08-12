@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/CSV/CSV.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CSV/src/ru/academits/ignatkov/csv/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CSV/src/ru/academits/ignatkov/csv/input.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix/Matrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSV/src/ru/academits/ignatkov/csv/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/CSV/src/ru/academits/ignatkov/csv/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +165,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628672301868</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Add Matrix">
+      <created>1628756134814</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1628756134814</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -196,7 +199,8 @@
     <MESSAGE value="Fix Matrix and Vector" />
     <MESSAGE value="Vector. Add and subtract" />
     <MESSAGE value="Add ArrayListHome" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add ArrayListHome" />
+    <MESSAGE value="Add Matrix" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Matrix" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

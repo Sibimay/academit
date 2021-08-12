@@ -3,7 +3,6 @@ package ru.academits.ignatkov.csv;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Main {
@@ -11,65 +10,95 @@ public class Main {
         try (PrintWriter writer = new PrintWriter("CSV/src/ru/academits/ignatkov/csv/output.html");
              Scanner scanner = new Scanner(new FileInputStream("CSV/src/ru/academits/ignatkov/csv/input.csv"))) {
 
-            writer.print("<!DOCTYPE html><html><head><title>Файл СSV</title><meta charset=\"UTF-8\"></head><body><table border=\"2\">");
-            boolean wasQuotes = false;
-            boolean lineStarted = false;
+            writer.print("<!DOCTYPE html><html><head><title>СSV</title><meta charset=\"UTF-8\"></head><body><table border=2>");
+
             int cellsCount = 0;
-            ArrayList<String> lineParts = new ArrayList<>();
+            boolean createdCell = false;
 
             while (scanner.hasNextLine()) {
-                if (cellsCount == 3) {
-                    lineParts.add("</tr>");
-                    lineParts.add("<tr>");
-                }
-
                 String line = scanner.nextLine();
+                int cellsInRow = 0;
 
-                int cellSeparatorIndex = 0;
-                int quotesIndex = 0;
-                int startIndex = 0;
-
-                while (cellSeparatorIndex != -1) {
-//                    line = line.substring(startIndex);
-                    quotesIndex = line.indexOf('"', cellSeparatorIndex);
-                    cellSeparatorIndex = line.indexOf(",", startIndex);
-
-                    if (!lineStarted) {
-                        lineParts.add("<tr>");
-                        lineStarted = true;
+                for (int i = 0; i < line.length(); i++) {
+                    if (i == 0 && !createdCell) {
+                        cellsInRow++;
+                        writer.print("<tr><td>");
                     }
 
-                    if (cellSeparatorIndex != - 1 && cellSeparatorIndex < quotesIndex && !wasQuotes) {
-                            lineParts.add("<td>");
-                            lineParts.add(line.substring(startIndex, cellSeparatorIndex));
-                            lineParts.add("</td>");
-
-                            cellsCount++;
-                            startIndex = cellSeparatorIndex + 1;
-                    } else if (wasQuotes) {
-                        lineParts.add(line.substring(startIndex, quotesIndex));
-                        lineParts.add("</td>");
-                        startIndex = cellSeparatorIndex + 1;
+                    if (i == 0 && createdCell) {
+                        cellsCount++;
+                        writer.print("<br/>");
                     }
 
-                    if (cellSeparatorIndex == -1 && quotesIndex != -1) {
-                        int secondQuotesIndex = line.indexOf('"', quotesIndex + 1);
-
-                        if (secondQuotesIndex == - 1) {
-                            lineParts.add("<td>");
-                            lineParts.add(line.substring(quotesIndex));
-                            lineParts.add("<br/>");
-                            cellsCount++;
-                            wasQuotes = true;
-                        }
+                    if (i == line.length() - 1 && line.charAt(i) == '"') {
+                        writer.print("</td></tr>");
+                        createdCell = false;
+                        continue;
                     }
+
+                    if (i == line.length() - 1 && line.charAt(i) == '"' && cellsInRow < cellsCount) {
+                        writer.print("</td><td></td></tr>");
+                        createdCell = false;
+                        continue;
+                    }
+
+                    if (i == line.length() - 1 && line.charAt(i) == ',') {
+                        writer.print("</td><td></td></tr>");
+                        createdCell = false;
+                        continue;
+                    }
+
+                    if (i == line.length() - 1 && !createdCell) {
+                        writer.print(line.charAt(i) + "</td></tr>");
+                        createdCell = false;
+                        continue;
+                    }
+
+                    if (line.charAt(i) == '"' && !createdCell) {
+                        createdCell = true;
+                        continue;
+                    }
+
+                    if (i != line.length() - 1 && createdCell && line.charAt(i) == '"' && line.charAt(i + 1) != '"') {
+                        createdCell = false;
+                        continue;
+                    }
+
+                    if (line.charAt(i) == ',' && createdCell) {
+                        writer.print(',');
+                        continue;
+                    }
+
+                    if (i != line.length() - 1 && createdCell && line.charAt(i) == '"' && line.charAt(i + 1) == '"') {
+                        writer.print('"');
+                        createdCell = false;
+                        continue;
+                    }
+
+                    if (line.charAt(i) == ',' && !createdCell) {
+                        writer.print("</td><td>");
+                        cellsInRow++;
+                        createdCell = false;
+                        continue;
+                    }
+
+                    if (line.charAt(i) == '>') {
+                        writer.print("&lt;");
+                        continue;
+                    }
+
+                    if (line.charAt(i) == '<') {
+                        writer.print("&gt;");
+                        continue;
+                    }
+
+                    if (line.charAt(i) == '&') {
+                        writer.print("&amp;");
+                        continue;
+                    }
+
+                    writer.print(line.charAt(i));
                 }
-
-                System.out.println(lineParts);
-            }
-
-            for (String line : lineParts) {
-                writer.print(line);
             }
 
             writer.print("</table></body></html>");
