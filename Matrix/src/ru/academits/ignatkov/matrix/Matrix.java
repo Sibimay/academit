@@ -5,19 +5,19 @@ import ru.academits.ignatkov.vector.Vector;
 public class Matrix {
     private Vector[] rows;
 
-    public Matrix(int rows, int columns) {
-        if (rows <= 0) {
-            throw new IllegalArgumentException("Количетсво строк матрицы не может быть меньше 1. Сейчас строк " + rows);
+    public Matrix(int rowsCount, int columnsCount) {
+        if (rowsCount <= 0) {
+            throw new IllegalArgumentException("Количетсво строк матрицы не может быть меньше 1. Сейчас строк " + rowsCount);
         }
 
-        if (columns <= 0) {
-            throw new IllegalArgumentException("Количество столбцов матрицы не может быть меньше 1. Сейчас столбцов " + columns);
+        if (columnsCount <= 0) {
+            throw new IllegalArgumentException("Количество столбцов матрицы не может быть меньше 1. Сейчас столбцов " + columnsCount);
         }
 
-        this.rows = new Vector[rows];
+        this.rows = new Vector[rowsCount];
 
         for (int i = 0; i < this.rows.length; i++) {
-            this.rows[i] = new Vector(columns);
+            this.rows[i] = new Vector(columnsCount);
         }
     }
 
@@ -90,11 +90,11 @@ public class Matrix {
         }
 
         if (index >= rows.length) {
-            throw new IndexOutOfBoundsException("Размер матрицы меньше, чем указанный индекс." +
+            throw new IndexOutOfBoundsException("Число строк матрицы меньше, чем указанный индекс." +
                     " Индекс = " + index + ", размер матрицы " + rows.length);
         }
 
-        return rows[index];
+        return new Vector(rows[index]);
     }
 
     public void setRowByIndex(int index, Vector vector) {
@@ -103,8 +103,13 @@ public class Matrix {
         }
 
         if (index >= rows.length) {
-            throw new IndexOutOfBoundsException("Размер матрицы меньше, чем указанный индекс." +
+            throw new IndexOutOfBoundsException("Число строк матрицы меньше, чем указанный индекс." +
                     " Индекс = " + index + ", размер матрицы " + rows.length);
+        }
+
+        if (vector.getSize() != rows.length) {
+            throw new IllegalArgumentException("Размер вектора не совпадает с длиной строки." +
+                    " Размер вектора " + vector.getSize() + ", длина строки " + rows.length);
         }
 
         int vectorSize = vector.getSize();
@@ -123,26 +128,26 @@ public class Matrix {
         }
 
         if (index >= getColumnsCount()) {
-            throw new IndexOutOfBoundsException("Размер матрицы меньше, чем указанный индекс. Индекс = " + index);
+            throw new IndexOutOfBoundsException("Число столбцов матрицы меньше, чем указанный индекс. Индекс = " + index);
         }
 
-        Vector resultVector = new Vector(rows.length);
+        Vector column = new Vector(rows.length);
 
         for (int i = 0; i < rows.length; i++) {
-            resultVector.setComponent(i, getRowByIndex(i).getComponent(index));
+            column.setComponent(i, getRowByIndex(i).getComponent(index));
         }
 
-        return resultVector;
+        return column;
     }
 
     public void transpose() {
-        Vector[] resultVectors = new Vector[getColumnsCount()];
+        Vector[] newRows = new Vector[getColumnsCount()];
 
         for (int i = 0; i < getColumnsCount(); i++) {
-            resultVectors[i] = new Vector(getColumnByIndex(i));
+            newRows[i] = getColumnByIndex(i);
         }
 
-        rows = resultVectors;
+        rows = newRows;
     }
 
     public void multiplyByScalar(double number) {
@@ -186,7 +191,7 @@ public class Matrix {
                 }
             }
 
-            determinant += rows[0].getComponent(i) * (new Matrix(algebraicComplement)).getDeterminant() * Math.pow(-1, i);
+            determinant += rows[0].getComponent(i) * new Matrix(algebraicComplement).getDeterminant() * Math.pow(-1, i);
         }
 
         return determinant;
@@ -199,8 +204,9 @@ public class Matrix {
         for (int i = 0; i < rows.length; i++) {
             stringBuilder.append(rows[i]);
 
-            if (i != rows.length - 1)
+            if (i != rows.length - 1) {
                 stringBuilder.append(", ");
+            }
         }
 
         return stringBuilder.append("}").toString();
@@ -212,13 +218,13 @@ public class Matrix {
                     " Длина вектора " + vector.getSize() + ", число столбцов " + getColumnsCount());
         }
 
-        double[] resultRows = new double[rows.length];
+        double[] resultComponents = new double[rows.length];
 
         for (int i = 0; i < rows.length; i++) {
-            resultRows[i] = Vector.getScalarProduct(rows[i], vector);
+            resultComponents[i] = Vector.getScalarProduct(rows[i], vector);
         }
 
-        return new Vector(resultRows);
+        return new Vector(resultComponents);
     }
 
     public void add(Matrix matrix) {
