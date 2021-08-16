@@ -1,22 +1,19 @@
 package ru.academits.ignatkov.csv;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.Scanner;
+import java.io.*;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         try (PrintWriter writer = new PrintWriter("CSV/src/ru/academits/ignatkov/csv/output.html");
-             Scanner scanner = new Scanner(new FileInputStream("CSV/src/ru/academits/ignatkov/csv/input.csv"))) {
+             BufferedReader bufferedReader = new BufferedReader(new FileReader("CSV/src/ru/academits/ignatkov/csv/input.csv"))) {
 
             writer.print("<!DOCTYPE html><html><head><title>СSV</title><meta charset=\"UTF-8\"></head><body><table border=2>");
 
             int cellsCount = 0;
             boolean createdCell = false;
 
-            while (scanner.hasNextLine()) {
-                String line = scanner.nextLine();
+            while (bufferedReader.ready()) {
+                String line = bufferedReader.readLine();
                 int cellsInRow = 0;
 
                 for (int i = 0; i < line.length(); i++) {
@@ -102,6 +99,9 @@ public class Main {
             }
 
             writer.print("</table></body></html>");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Входной csv-файл не найден");
         }
     }
 }

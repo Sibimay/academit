@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArrayListHome/src/ru/academits/ignatkov/arraylisthome/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayListHome/src/ru/academits/ignatkov/arraylisthome/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CSV/src/ru/academits/ignatkov/csv/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/CSV/src/ru/academits/ignatkov/csv/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +53,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
-  <component name="RunManager" selected="Application.Main (4)">
+  <component name="RunManager" selected="Application.Main (3)">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.shapes_main.Main" />
       <module name="Shapes" />
@@ -120,8 +121,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main (4)" />
         <item itemvalue="Application.Main (3)" />
+        <item itemvalue="Application.Main (4)" />
         <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main (1)" />
@@ -172,7 +173,14 @@
       <option name="project" value="LOCAL" />
       <updated>1628756134814</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Add CSV">
+      <created>1628763063405</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1628763063405</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -200,7 +208,8 @@
     <MESSAGE value="Vector. Add and subtract" />
     <MESSAGE value="Add ArrayListHome" />
     <MESSAGE value="Add Matrix" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Matrix" />
+    <MESSAGE value="Add CSV" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add CSV" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

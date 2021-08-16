@@ -1,47 +1,51 @@
 package ru.academits.ignatkov.arraylisthome;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Scanner;
+import java.util.Iterator;
 
 public class Main {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) {
         // Подзадача 1
-        try (Scanner scanner = new Scanner(new FileInputStream("ArrayListHome/src/ru/academits/ignatkov/arraylisthome/input.txt"))) {
-            ArrayList<String> arrayList1 = new ArrayList<>();
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("ArrayListHome/src/ru/academits/ignatkov/arraylisthome/input.txt"))) {
+            ArrayList<String> fileLines = new ArrayList<>();
 
-            while (scanner.hasNextLine()) {
-                arrayList1.add(scanner.nextLine());
+            while (bufferedReader.ready()) {
+                fileLines.add(bufferedReader.readLine());
             }
 
-            System.out.println(arrayList1);
+            System.out.println("Строки, прочитанные из файла: " + fileLines);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Входной файл не найден");
         }
 
         // Подзадача 2
-        ArrayList<Integer> arrayList2 = new ArrayList<>(Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9));
+        ArrayList<Integer> arrayList1 = new ArrayList<>(Arrays.asList(1, 2, 2, 2, 2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10));
 
-        for (int i = 0; i < arrayList2.size(); i++) {
-            Integer element = arrayList2.get(i);
+        System.out.println("Список до удаления чётных чисел: " + arrayList1);
 
-            if (element % 2 == 0) {
-                arrayList2.remove(element);
+        Iterator<Integer> iterator = arrayList1.iterator();
+
+        while (iterator.hasNext()) {
+            if (iterator.next() % 2 == 0) {
+                iterator.remove();
             }
         }
 
-        System.out.println(arrayList2);
+        System.out.println("Список после удаления чётных чисел: " + arrayList1);
 
         // Подзадача 3
         ArrayList<Integer> arrayList3 = new ArrayList<>(Arrays.asList(1, 5, 2, 1, 3, 5, 2, 7));
-        ArrayList<Integer> resultArrayList = new ArrayList<>();
+        ArrayList<Integer> arrayListWithoutRepeats = new ArrayList<>(arrayList3.size());
 
         for (Integer element : arrayList3) {
-            if (!resultArrayList.contains(element)) {
-                resultArrayList.add(element);
+            if (!arrayListWithoutRepeats.contains(element)) {
+                arrayListWithoutRepeats.add(element);
             }
         }
 
-        System.out.println(resultArrayList);
+        System.out.println("Список без повторяющихся чисел" + arrayListWithoutRepeats);
     }
 }
