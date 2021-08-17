@@ -2,89 +2,95 @@ package ru.academits.ignatkov.csv;
 
 import java.io.*;
 
-public class Main {
+public class MainCsv {
     public static void main(String[] args) {
-        try (PrintWriter writer = new PrintWriter("CSV/src/ru/academits/ignatkov/csv/output.html");
-             BufferedReader bufferedReader = new BufferedReader(new FileReader("CSV/src/ru/academits/ignatkov/csv/input.csv"))) {
+        if (args.length < 2) {
+            throw new IllegalArgumentException("Нужно передать два аргумента:" +
+                    " 1 - путь к csv-файлу с таблицей, 2 - путь, куда сохранится итоговый html файл. Сейчас аргументов " + args.length);
+        }
 
-            writer.print("<!DOCTYPE html><html><head><title>СSV</title><meta charset=\"UTF-8\"></head><body><table border=2>");
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(args[0]));
+             PrintWriter writer = new PrintWriter(args[1])) {
+
+            writer.print("<!DOCTYPE html><html><head><title>СSV</title><meta charset=\"UTF-8\"></head><body><table border=\"2\">");
 
             int cellsCount = 0;
-            boolean createdCell = false;
+            boolean isCellCreated = false;
 
-            while (bufferedReader.ready()) {
-                String line = bufferedReader.readLine();
+            String line = bufferedReader.readLine();
+
+            while (line != null) {
                 int cellsInRow = 0;
 
                 for (int i = 0; i < line.length(); i++) {
-                    if (i == 0 && !createdCell) {
+                    if (i == 0 && !isCellCreated) {
                         cellsInRow++;
                         writer.print("<tr><td>");
                     }
 
-                    if (i == 0 && createdCell) {
+                    if (i == 0 && isCellCreated) {
                         cellsCount++;
                         writer.print("<br/>");
                     }
 
                     if (i == line.length() - 1 && line.charAt(i) == '"') {
                         writer.print("</td></tr>");
-                        createdCell = false;
+                        isCellCreated = false;
                         continue;
                     }
 
                     if (i == line.length() - 1 && line.charAt(i) == '"' && cellsInRow < cellsCount) {
                         writer.print("</td><td></td></tr>");
-                        createdCell = false;
+                        isCellCreated = false;
                         continue;
                     }
 
                     if (i == line.length() - 1 && line.charAt(i) == ',') {
                         writer.print("</td><td></td></tr>");
-                        createdCell = false;
+                        isCellCreated = false;
                         continue;
                     }
 
-                    if (i == line.length() - 1 && !createdCell) {
+                    if (i == line.length() - 1 && !isCellCreated) {
                         writer.print(line.charAt(i) + "</td></tr>");
-                        createdCell = false;
+                        isCellCreated = false;
                         continue;
                     }
 
-                    if (line.charAt(i) == '"' && !createdCell) {
-                        createdCell = true;
+                    if (line.charAt(i) == '"' && !isCellCreated) {
+                        isCellCreated = true;
                         continue;
                     }
 
-                    if (i != line.length() - 1 && createdCell && line.charAt(i) == '"' && line.charAt(i + 1) != '"') {
-                        createdCell = false;
+                    if (i != line.length() - 1 && isCellCreated && line.charAt(i) == '"' && line.charAt(i + 1) != '"') {
+                        isCellCreated = false;
                         continue;
                     }
 
-                    if (line.charAt(i) == ',' && createdCell) {
+                    if (line.charAt(i) == ',' && isCellCreated) {
                         writer.print(',');
                         continue;
                     }
 
-                    if (i != line.length() - 1 && createdCell && line.charAt(i) == '"' && line.charAt(i + 1) == '"') {
+                    if (i != line.length() - 1 && isCellCreated && line.charAt(i) == '"' && line.charAt(i + 1) == '"') {
                         writer.print('"');
-                        createdCell = false;
+                        isCellCreated = false;
                         continue;
                     }
 
-                    if (line.charAt(i) == ',' && !createdCell) {
+                    if (line.charAt(i) == ',' && !isCellCreated) {
                         writer.print("</td><td>");
                         cellsInRow++;
-                        createdCell = false;
-                        continue;
-                    }
-
-                    if (line.charAt(i) == '>') {
-                        writer.print("&lt;");
+                        isCellCreated = false;
                         continue;
                     }
 
                     if (line.charAt(i) == '<') {
+                        writer.print("&lt;");
+                        continue;
+                    }
+
+                    if (line.charAt(i) == '>') {
                         writer.print("&gt;");
                         continue;
                     }
@@ -96,12 +102,15 @@ public class Main {
 
                     writer.print(line.charAt(i));
                 }
+
+                line = bufferedReader.readLine();
             }
 
             writer.print("</table></body></html>");
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException e) {
             System.out.println("Входной csv-файл не найден");
+        } catch (IOException e) {
+            System.out.println("Ошибка ввода/вывода");
         }
     }
 }

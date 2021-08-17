@@ -11,8 +11,11 @@ public class Main {
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader("ArrayListHome/src/ru/academits/ignatkov/arraylisthome/input.txt"))) {
             ArrayList<String> fileLines = new ArrayList<>();
 
-            while (bufferedReader.ready()) {
-                fileLines.add(bufferedReader.readLine());
+            String line = bufferedReader.readLine();
+
+            while (line != null) {
+                fileLines.add(line);
+                line = bufferedReader.readLine();
             }
 
             System.out.println("Строки, прочитанные из файла: " + fileLines);

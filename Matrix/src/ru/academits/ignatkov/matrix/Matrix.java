@@ -7,17 +7,17 @@ public class Matrix {
 
     public Matrix(int rowsCount, int columnsCount) {
         if (rowsCount <= 0) {
-            throw new IllegalArgumentException("Количетсво строк матрицы не может быть меньше 1. Сейчас строк " + rowsCount);
+            throw new IllegalArgumentException("Количество строк матрицы не может быть меньше 1. Сейчас строк " + rowsCount);
         }
 
         if (columnsCount <= 0) {
             throw new IllegalArgumentException("Количество столбцов матрицы не может быть меньше 1. Сейчас столбцов " + columnsCount);
         }
 
-        this.rows = new Vector[rowsCount];
+        rows = new Vector[rowsCount];
 
-        for (int i = 0; i < this.rows.length; i++) {
-            this.rows[i] = new Vector(columnsCount);
+        for (int i = 0; i < rows.length; i++) {
+            rows[i] = new Vector(columnsCount);
         }
     }
 
@@ -90,7 +90,7 @@ public class Matrix {
         }
 
         if (index >= rows.length) {
-            throw new IndexOutOfBoundsException("Число строк матрицы меньше, чем указанный индекс." +
+            throw new IndexOutOfBoundsException("Указанный индекс больше или равен числу строк матрицы." +
                     " Индекс = " + index + ", размер матрицы " + rows.length);
         }
 
@@ -103,20 +103,13 @@ public class Matrix {
         }
 
         if (index >= rows.length) {
-            throw new IndexOutOfBoundsException("Число строк матрицы меньше, чем указанный индекс." +
+            throw new IndexOutOfBoundsException("Указанный индекс больше или равен числу строк матрицы" +
                     " Индекс = " + index + ", размер матрицы " + rows.length);
         }
 
         if (vector.getSize() != rows.length) {
             throw new IllegalArgumentException("Размер вектора не совпадает с длиной строки." +
                     " Размер вектора " + vector.getSize() + ", длина строки " + rows.length);
-        }
-
-        int vectorSize = vector.getSize();
-
-        if (vectorSize > getColumnsCount()) {
-            throw new IllegalArgumentException("Размер введенного вектора больше, чем число столбцов матрицы." +
-                    " Размер вектора = " + vectorSize + ", число столбцов матрицы " + getColumnsCount());
         }
 
         rows[index] = new Vector(vector);
@@ -134,7 +127,7 @@ public class Matrix {
         Vector column = new Vector(rows.length);
 
         for (int i = 0; i < rows.length; i++) {
-            column.setComponent(i, getRowByIndex(i).getComponent(index));
+            column.setComponent(i, rows[i].getComponent(index));
         }
 
         return column;
