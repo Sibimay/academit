@@ -19,9 +19,10 @@ public class Main {
             }
 
             System.out.println("Строки, прочитанные из файла: " + fileLines);
-        } catch (IOException e) {
-            e.printStackTrace();
+        } catch (FileNotFoundException e) {
             System.out.println("Входной файл не найден");
+        } catch (IOException e) {
+            System.out.println("Ошибка ввода/вывода");
         }
 
         // Подзадача 2

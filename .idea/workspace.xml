@@ -2,12 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ArrayList/ArrayList.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist/MyArrayList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist_main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ArrayListHome/src/ru/academits/ignatkov/arraylisthome/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayListHome/src/ru/academits/ignatkov/arraylisthome/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSV/src/ru/academits/ignatkov/csv/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/CSV/src/ru/academits/ignatkov/csv/MainCsv.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSV/src/ru/academits/ignatkov/csv/input.csv" beforeDir="false" afterPath="$PROJECT_DIR$/CSV/src/ru/academits/ignatkov/csv/input.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix/Matrix.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix_main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,20 +57,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
-  <component name="RunManager" selected="Application.Main (2)">
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.shapes_main.Main" />
-      <module name="Shapes" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.academits.ignatkov.shapes_main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Main (4)">
     <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.matrix_main.Main" />
       <module name="Matrix" />
@@ -84,12 +71,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.vector_main.Main" />
-      <module name="Vector" />
+    <configuration name="Main (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.arraylist_main.Main" />
+      <module name="ArrayList" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.academits.ignatkov.vector_main.*" />
+          <option name="PATTERN" value="ru.academits.ignatkov.arraylist_main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -97,13 +84,25 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+    <configuration name="Main (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.arraylisthome.Main" />
       <module name="ArrayListHome" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;CSV/src/ru/academits/ignatkov/csv/input.csv&quot; &quot;CSV/src/ru/academits/ignatkov/csv/output.html&quot;" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ru.academits.ignatkov.arraylisthome.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.vector_main.Main" />
+      <module name="Vector" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.academits.ignatkov.vector_main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -125,19 +124,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.arraylisthome.Main" />
+      <module name="ArrayListHome" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;CSV/src/ru/academits/ignatkov/csv/input.csv&quot; &quot;CSV/src/ru/academits/ignatkov/csv/output.html&quot;" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.academits.ignatkov.arraylisthome.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main" />
-      <item itemvalue="Application.Main (1)" />
       <item itemvalue="Application.Main (2)" />
       <item itemvalue="Application.MainCsv" />
+      <item itemvalue="Application.Main (3)" />
+      <item itemvalue="Application.Main (4)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (4)" />
+        <item itemvalue="Application.Main (3)" />
         <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.MainCsv" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -199,7 +213,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629110715331</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Csv. Get paths from arguments, fix &lt;&gt; bug, change while condition.&#10;ArrayListHome. Change while condition.&#10;Matrix. Fix small bugs">
+      <created>1629181507333</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1629181507333</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -229,7 +250,8 @@
     <MESSAGE value="Add Matrix" />
     <MESSAGE value="Add CSV" />
     <MESSAGE value="Change scanner to BufferedReader in arrayListHome and csv.&#10;Fix arrayListHome second part. Add text in messages" />
-    <option name="LAST_COMMIT_MESSAGE" value="Change scanner to BufferedReader in arrayListHome and csv.&#10;Fix arrayListHome second part. Add text in messages" />
+    <MESSAGE value="Csv. Get paths from arguments, fix &lt;&gt; bug, change while condition.&#10;ArrayListHome. Change while condition.&#10;Matrix. Fix small bugs" />
+    <option name="LAST_COMMIT_MESSAGE" value="Csv. Get paths from arguments, fix &lt;&gt; bug, change while condition.&#10;ArrayListHome. Change while condition.&#10;Matrix. Fix small bugs" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
