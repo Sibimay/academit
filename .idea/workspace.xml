@@ -2,12 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ArrayList/ArrayList.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist/MyArrayList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist_main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArrayListHome/src/ru/academits/ignatkov/arraylisthome/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayListHome/src/ru/academits/ignatkov/arraylisthome/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist/MyArrayList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist_main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSV/src/ru/academits/ignatkov/csv/MainCsv.java" beforeDir="false" afterPath="$PROJECT_DIR$/CSV/src/ru/academits/ignatkov/csv/MainCsv.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CSV/src/ru/academits/ignatkov/csv/input.csv" beforeDir="false" afterPath="$PROJECT_DIR$/CSV/input.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,7 +56,12 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
   </component>
-  <component name="RunManager" selected="Application.Main (4)">
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/CSV" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.MainCsv">
     <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.matrix_main.Main" />
       <module name="Matrix" />
@@ -113,7 +117,7 @@
     <configuration name="MainCsv" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.csv.MainCsv" />
       <module name="CSV" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;CSV/src/ru/academits/ignatkov/csv/input.csv&quot;  &quot;CSV/src/ru/academits/ignatkov/csv/output.html&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;CSV/input.csv&quot;  &quot;CSV/src/ru/academits/ignatkov/csv/output.html&quot;" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ru.academits.ignatkov.csv.*" />
@@ -147,10 +151,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main (4)" />
-        <item itemvalue="Application.Main (3)" />
-        <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.MainCsv" />
+        <item itemvalue="Application.Main (3)" />
+        <item itemvalue="Application.Main (4)" />
+        <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
@@ -220,7 +224,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629181507333</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Start to add MyArrayList.&#10;ArrayListHome. Add catch for file not found exception, delete stack print">
+      <created>1629341913383</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1629341913383</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -251,7 +262,8 @@
     <MESSAGE value="Add CSV" />
     <MESSAGE value="Change scanner to BufferedReader in arrayListHome and csv.&#10;Fix arrayListHome second part. Add text in messages" />
     <MESSAGE value="Csv. Get paths from arguments, fix &lt;&gt; bug, change while condition.&#10;ArrayListHome. Change while condition.&#10;Matrix. Fix small bugs" />
-    <option name="LAST_COMMIT_MESSAGE" value="Csv. Get paths from arguments, fix &lt;&gt; bug, change while condition.&#10;ArrayListHome. Change while condition.&#10;Matrix. Fix small bugs" />
+    <MESSAGE value="Start to add MyArrayList.&#10;ArrayListHome. Add catch for file not found exception, delete stack print" />
+    <option name="LAST_COMMIT_MESSAGE" value="Start to add MyArrayList.&#10;ArrayListHome. Add catch for file not found exception, delete stack print" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

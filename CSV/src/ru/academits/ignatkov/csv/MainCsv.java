@@ -5,8 +5,10 @@ import java.io.*;
 public class MainCsv {
     public static void main(String[] args) {
         if (args.length < 2) {
-            throw new IllegalArgumentException("Нужно передать два аргумента:" +
+            System.out.println("Нужно передать два аргумента:" +
                     " 1 - путь к csv-файлу с таблицей, 2 - путь, куда сохранится итоговый html файл. Сейчас аргументов " + args.length);
+
+            return;
         }
 
         try (BufferedReader bufferedReader = new BufferedReader(new FileReader(args[0]));
