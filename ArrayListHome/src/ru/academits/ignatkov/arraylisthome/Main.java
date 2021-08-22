@@ -8,7 +8,7 @@ import java.util.Iterator;
 public class Main {
     public static void main(String[] args) {
         // Подзадача 1
-        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("ArrayListHome/src/ru/academits/ignatkov/arraylisthome/input.txt"))) {
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader("ArrayListHome/input.txt"))) {
             ArrayList<String> fileLines = new ArrayList<>();
 
             String line = bufferedReader.readLine();

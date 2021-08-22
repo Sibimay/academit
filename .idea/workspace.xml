@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Lambda/src/ru/academits/ignatkov/lambda/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Lambda/src/ru/academits/ignatkov/lambda_main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist/MyArrayList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist_main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSV/src/ru/academits/ignatkov/csv/MainCsv.java" beforeDir="false" afterPath="$PROJECT_DIR$/CSV/src/ru/academits/ignatkov/csv/MainCsv.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CSV/src/ru/academits/ignatkov/csv/input.csv" beforeDir="false" afterPath="$PROJECT_DIR$/CSV/input.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArrayListHome/src/ru/academits/ignatkov/arraylisthome/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayListHome/src/ru/academits/ignatkov/arraylisthome/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArrayListHome/src/ru/academits/ignatkov/arraylisthome/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayListHome/input.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,10 +59,24 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/ArrayListHome" />
       <recent name="$PROJECT_DIR$/CSV" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.MainCsv">
+  <component name="RunManager" selected="Application.Main (1)">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.lambda_main.Main" />
+      <module name="Lambda" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.academits.ignatkov.lambda_main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.matrix_main.Main" />
       <module name="Matrix" />
@@ -101,19 +116,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.vector_main.Main" />
-      <module name="Vector" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.academits.ignatkov.vector_main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="MainCsv" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.csv.MainCsv" />
       <module name="CSV" />
@@ -143,19 +145,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Application.Main" />
       <item itemvalue="Application.Main (2)" />
       <item itemvalue="Application.MainCsv" />
       <item itemvalue="Application.Main (3)" />
       <item itemvalue="Application.Main (4)" />
+      <item itemvalue="Application.Main (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.MainCsv" />
         <item itemvalue="Application.Main (3)" />
         <item itemvalue="Application.Main (4)" />
         <item itemvalue="Application.Main (2)" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -231,7 +233,14 @@
       <option name="project" value="LOCAL" />
       <updated>1629341913383</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Change csv behavior on arguments lack.&#10;End with MyArrayList">
+      <created>1629631449750</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1629631449750</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -263,7 +272,9 @@
     <MESSAGE value="Change scanner to BufferedReader in arrayListHome and csv.&#10;Fix arrayListHome second part. Add text in messages" />
     <MESSAGE value="Csv. Get paths from arguments, fix &lt;&gt; bug, change while condition.&#10;ArrayListHome. Change while condition.&#10;Matrix. Fix small bugs" />
     <MESSAGE value="Start to add MyArrayList.&#10;ArrayListHome. Add catch for file not found exception, delete stack print" />
-    <option name="LAST_COMMIT_MESSAGE" value="Start to add MyArrayList.&#10;ArrayListHome. Add catch for file not found exception, delete stack print" />
+    <MESSAGE value="Change csv behavior on arguments lack.&#10;End with MyArrayList" />
+    <MESSAGE value="Add lambda" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add lambda" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
