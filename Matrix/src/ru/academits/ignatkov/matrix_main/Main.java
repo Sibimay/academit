@@ -17,7 +17,7 @@ public class Main {
         Vector[] vectors = {vector1, vector2, vector3};
 
         Matrix matrix1 = new Matrix(vectors);
-        System.out.println(matrix1.toString());
+        System.out.println(matrix1);
 
         Matrix matrix2 = new Matrix(matrix1);
         System.out.println("Копируем матрицу matrix1 в матрицу matrix2: " + matrix2);

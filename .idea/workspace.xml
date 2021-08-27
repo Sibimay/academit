@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Lambda/src/ru/academits/ignatkov/lambda/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Lambda/src/ru/academits/ignatkov/lambda_main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArrayListHome/src/ru/academits/ignatkov/arraylisthome/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayListHome/src/ru/academits/ignatkov/arraylisthome/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArrayListHome/src/ru/academits/ignatkov/arraylisthome/input.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayListHome/input.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix/Matrix.java" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix/Matrix.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix_main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -116,20 +113,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainCsv" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.csv.MainCsv" />
-      <module name="CSV" />
-      <option name="PROGRAM_PARAMETERS" value="&quot;CSV/input.csv&quot;  &quot;CSV/src/ru/academits/ignatkov/csv/output.html&quot;" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.academits.ignatkov.csv.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Main" type="Application" factoryName="Application" temporary="true">
       <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.arraylisthome.Main" />
       <module name="ArrayListHome" />
@@ -144,7 +127,22 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="MainCsv" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.csv.MainCsv" />
+      <module name="CSV" />
+      <option name="PROGRAM_PARAMETERS" value="&quot;CSV/input.csv&quot;  &quot;CSV/src/ru/academits/ignatkov/csv/output.html&quot;" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.academits.ignatkov.csv.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
+      <item itemvalue="Application.Main" />
       <item itemvalue="Application.Main (2)" />
       <item itemvalue="Application.MainCsv" />
       <item itemvalue="Application.Main (3)" />
@@ -240,7 +238,21 @@
       <option name="project" value="LOCAL" />
       <updated>1629631449750</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add lambda">
+      <created>1629634779201</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1629634779201</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Add lambda.iml to git">
+      <created>1629634914994</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1629634914994</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -274,7 +286,8 @@
     <MESSAGE value="Start to add MyArrayList.&#10;ArrayListHome. Add catch for file not found exception, delete stack print" />
     <MESSAGE value="Change csv behavior on arguments lack.&#10;End with MyArrayList" />
     <MESSAGE value="Add lambda" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add lambda" />
+    <MESSAGE value="Add lambda.iml to git" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add lambda.iml to git" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

@@ -22,7 +22,7 @@ public class Matrix {
     }
 
     public Matrix(Matrix matrix) {
-        rows = new Vector[matrix.getRowsCount()];
+        rows = new Vector[matrix.rows.length];
 
         for (int i = 0; i < matrix.rows.length; i++) {
             rows[i] = new Vector(matrix.rows[i]);
@@ -107,7 +107,7 @@ public class Matrix {
                     " Индекс = " + index + ", размер матрицы " + rows.length);
         }
 
-        if (vector.getSize() != rows.length) {
+        if (vector.getSize() != getColumnsCount()) {
             throw new IllegalArgumentException("Размер вектора не совпадает с длиной строки." +
                     " Размер вектора " + vector.getSize() + ", длина строки " + rows.length);
         }
@@ -121,7 +121,7 @@ public class Matrix {
         }
 
         if (index >= getColumnsCount()) {
-            throw new IndexOutOfBoundsException("Число столбцов матрицы меньше, чем указанный индекс. Индекс = " + index);
+            throw new IndexOutOfBoundsException("Указанный индекс больше или равен числу столбцов матрицы. Индекс = " + index);
         }
 
         Vector column = new Vector(rows.length);
@@ -154,7 +154,7 @@ public class Matrix {
         int columnsCount = getColumnsCount();
 
         if (rowsCount != columnsCount) {
-            throw new ArithmeticException("Нельзя вычислять определитель у прямоугольной матрицы. " +
+            throw new UnsupportedOperationException("Нельзя вычислять определитель у прямоугольной матрицы. " +
                     "Размеры матрицы: " + rowsCount + "x" + columnsCount);
         }
 
