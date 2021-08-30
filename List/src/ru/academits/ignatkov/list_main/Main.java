@@ -5,7 +5,6 @@ import ru.academits.ignatkov.list.SinglyLinkedList;
 public class Main {
 
     public static void main(String[] args) {
-        //е  t
         SinglyLinkedList<Integer> singlyLinkedList = new SinglyLinkedList<>();
 
         singlyLinkedList.addFirstElement(3);

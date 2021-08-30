@@ -23,16 +23,16 @@ public class Main {
                 new Person("Anna", 25)
         ));
 
-        List<Person> distinctNames = persons.stream()
-                .distinct()
-                .collect(Collectors.toList());
-        System.out.println("Список уникальных имен: " + distinctNames);
-
-        String distinctNamesNewFormat = persons.stream()
+        List<String> personsWithDistinctNames = persons.stream()
                 .map(Person::getName)
                 .distinct()
-                .collect(Collectors.joining(", "));
-        System.out.println("Список уникальных имен в новом формате: " + distinctNamesNewFormat);
+                .collect(Collectors.toList());
+        System.out.println("Список уникальных имен: " + personsWithDistinctNames);
+
+        String distinctNamesOtherFormat = personsWithDistinctNames.stream()
+                .collect(Collectors.joining(", ", "Имена: ", "."));
+
+        System.out.println(distinctNamesOtherFormat);
 
         List<Person> personsUnder18 = persons
                 .stream()
@@ -44,10 +44,10 @@ public class Main {
                 .collect(averagingDouble(Person::getAge));
         System.out.println("Средний возраст до 18 лет: " + personsUnder18AverageAge);
 
-        Map<String, Double> personsByMiddleAge = persons
+        Map<String, Double> personsAverageAgeGroupedByNames = persons
                 .stream()
                 .collect(Collectors.groupingBy(Person::getName, averagingDouble(Person::getAge)));
-        personsByMiddleAge.forEach((k, v) -> System.out.println("Средний возраст: " + k + " - " + v));
+        personsAverageAgeGroupedByNames.forEach((k, v) -> System.out.println("Средний возраст: " + k + " - " + v));
 
         List<Person> personsByAgeFrom20To45 = persons
                 .stream()
@@ -55,8 +55,6 @@ public class Main {
                 .sorted((p1, p2) -> (p2.getAge() - p1.getAge()))
                 .collect(Collectors.toList());
 
-        personsByAgeFrom20To45.stream()
-                .map(p -> p.getAge() + ": " + p.getName())
-                .forEach(System.out::println);
+        System.out.println(personsByAgeFrom20To45);
     }
 }

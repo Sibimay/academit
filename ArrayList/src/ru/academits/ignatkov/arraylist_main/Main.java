@@ -18,10 +18,14 @@ public class Main {
         myArrayList.add(5);
         myArrayList.add(6);
         myArrayList.add(7);
+        myArrayList.add(null);
+
+        myArrayList.contains(null);
+        myArrayList.remove(Integer.valueOf(5));
         System.out.println("New array list: " + myArrayList + " and its size: " + myArrayList.size());
         System.out.println("Is myArrayList empty: " + myArrayList.isEmpty());
 
-        myArrayList.addAll(1, new ArrayList<>(Arrays.asList(5, 6, 7, 8)));
+        myArrayList.addAll(1, new ArrayList<>(Arrays.asList(5, 6, 7, 8, null)));
         System.out.println("After 'Add all' array list is: " + myArrayList);
 
         myArrayList.remove(Integer.valueOf(2));
@@ -30,10 +34,13 @@ public class Main {
         myArrayList.add(0, 3);
         System.out.println("After 'Add by index' (index = 0, value = 3) array list is: " + myArrayList);
 
+        myArrayList.removeAll(new ArrayList<>(Arrays.asList(5, 3, null)));
+        System.out.println("After deleting of 5, 3 and null array list is: " + myArrayList);
+
         System.out.println("Index of first 3 is: " + myArrayList.indexOf(3));
         System.out.println("Index of last 3 is: " + myArrayList.lastIndexOf(3));
 
-        myArrayList.retainAll(new ArrayList<>(Arrays.asList(1, 2, 5, 10)));
+        myArrayList.retainAll(new ArrayList<>(Arrays.asList(1, 2, 5, 10, null)));
         System.out.println("After 'Retain' array list is: " + myArrayList);
 
         myArrayList.clear();
