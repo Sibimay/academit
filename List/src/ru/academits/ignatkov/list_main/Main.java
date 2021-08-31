@@ -14,7 +14,6 @@ public class Main {
         System.out.println("Количество элементов списка: " + singlyLinkedList.getSize() + ". Вот они: " + singlyLinkedList);
         System.out.println("Первый элемент: " + singlyLinkedList.getFirstElement());
         System.out.println("Второй элемент: " + singlyLinkedList.getDataByIndex(1));
-
         Integer previousData = singlyLinkedList.setElementDataByIndex(1, 12);
         System.out.println("Теперь второй элемент такой: " + singlyLinkedList.getDataByIndex(1) + ". Предыдущее значение " + previousData);
 
@@ -26,5 +25,15 @@ public class Main {
 
         Integer deletedFirstElementData = singlyLinkedList.deleteFirstElement();
         System.out.println("После удаления первого элемента список пуст: " + singlyLinkedList + ". Удаленный элемент " + deletedFirstElementData);
+
+        singlyLinkedList.addFirstElement(3);
+        singlyLinkedList.addElementByIndex(1, 5);
+        singlyLinkedList.addElementByIndex(1, 2);
+
+        System.out.println("Новый список: " + singlyLinkedList);
+        singlyLinkedList.reverse();
+        System.out.println("После разворота список такой: " + singlyLinkedList);
+
+        System.out.println("Скопированный список: " + singlyLinkedList.cloneList());
     }
 }

@@ -19,7 +19,7 @@ public class SinglyLinkedList<E> {
     }
 
     public E setElementDataByIndex(int index, E data) {
-        checkIndex(index);
+        checkIndex(index, count);
 
         ListItem<E> element = getElementByIndex(index);
         E oldData = element.getData();
@@ -30,25 +30,25 @@ public class SinglyLinkedList<E> {
     }
 
     public E deleteElementByIndex(int index) {
-        checkIndex(index);
+        checkIndex(index, count);
 
         ListItem<E> element = getElementByIndex(index);
-        ListItem<E> previousElement = getElementByIndex(index - 1);
-        ListItem<E> nextElement = element.getNext();
+        E elementData = element.getData();
 
-        if (nextElement != null) {
-            previousElement.setNext(getElementByIndex(index + 1));
+        if (index == 0) {
+            deleteFirstElement();
         } else {
-            previousElement.setNext(null);
+            ListItem<E> previous = getElementByIndex(index - 1);
+            previous.setNext(element.getNext());
         }
 
         count--;
 
-        return element.getData();
+        return elementData;
     }
 
     private ListItem<E> getElementByIndex(int index) {
-        checkIndex(index);
+        checkIndex(index, count);
 
         ListItem<E> element = head;
         int i = 0;
@@ -67,7 +67,7 @@ public class SinglyLinkedList<E> {
     }
 
     public void addElementByIndex(int index, E data) {
-        checkIndex(index);
+        checkIndex(index, count + 1);
 
         if (index == 0) {
             addFirstElement(data);
@@ -109,19 +109,56 @@ public class SinglyLinkedList<E> {
     }
 
     public void reverse() {
-        checkListEmpty();
-
-
-    }
-
-
-    private void checkIndex(int index) {
-        if (index < 0) {
-            throw new IndexOutOfBoundsException("Указанный индекс меньше нуля");
+        if (count == 0) {
+            return;
         }
 
-        if (index > count) {
-            throw new IndexOutOfBoundsException("Указанный индекс больше размера списка");
+        for (ListItem<E> element = head.getNext(), previous = head, beforePrevious = null;
+             element != null; previous = element, element = element.getNext()) {
+            previous.setNext(beforePrevious);
+            beforePrevious = previous;
+
+            if (element.getNext() == null) {
+                head = element;
+                head.setNext(previous);
+                return;
+            }
+        }
+    }
+
+    public SinglyLinkedList<E> cloneList() {
+        SinglyLinkedList<E> copiedList = new SinglyLinkedList<>();
+
+        if (head == null) {
+            return copiedList;
+        }
+
+        ListItem<E> copiedListElement = new ListItem<>(head.getData(), null);
+
+        copiedList.head = copiedListElement;
+        ListItem<E> element = head.getNext();
+
+        while (element != null) {
+            ListItem<E> nextCopiedListElement = new ListItem<>(element.getData(), null);
+            copiedListElement.setNext(nextCopiedListElement);
+            copiedListElement = nextCopiedListElement;
+
+            element = element.getNext();
+        }
+
+        copiedList.count = count;
+
+        return copiedList;
+    }
+
+    private void checkIndex(int index, int newCount) {
+        if (index < 0) {
+            throw new IndexOutOfBoundsException("Указанный индекс меньше нуля. Индекс = " + index);
+        }
+
+        if (index > newCount) {
+            throw new IndexOutOfBoundsException("Указанный индекс больше или равен размеру списка." +
+                    " Индекс = " + index + ", размер списка = " + newCount);
         }
     }
 
@@ -137,7 +174,6 @@ public class SinglyLinkedList<E> {
         ListItem<E> element = head;
 
         for (int i = 0; i < count; i++) {
-
             stringBuilder.append(element.getData());
 
             if (i != count - 1) {
