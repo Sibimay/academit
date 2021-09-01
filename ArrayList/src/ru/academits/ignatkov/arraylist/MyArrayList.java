@@ -64,7 +64,7 @@ public class MyArrayList<E> implements List<E> {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
+    @SuppressWarnings({"SuspiciousSystemArraycopy", "unchecked"})
     public <E1> E1[] toArray(E1[] a) {
         if (a.length < size) {
             return (E1[]) Arrays.copyOf(elements, size, a.getClass());

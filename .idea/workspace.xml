@@ -2,9 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="Add lambda.iml to git">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HashTable/HashTable.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HashTable/src/ru/academits/ignatkov/hashtable/MyHashTable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/HashTable/src/ru/academits/ignatkov/hashtable_main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list/SinglyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list/SinglyLinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list_main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist/MyArrayList.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,6 +20,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
+        <option value="package-info" />
         <option value="Class" />
       </list>
     </option>
@@ -60,7 +66,7 @@
       <recent name="$PROJECT_DIR$/CSV" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main (5)">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.lambda_main.Main" />
       <module name="Lambda" />
@@ -87,12 +93,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (4)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.arraylisthome.Main" />
-      <module name="ArrayListHome" />
+    <configuration name="Main (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.list_main.Main" />
+      <module name="List" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.academits.ignatkov.arraylisthome.*" />
+          <option name="PATTERN" value="ru.academits.ignatkov.list_main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -100,12 +106,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (5)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.list_main.Main" />
-      <module name="List" />
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.hashtable_main.Main" />
+      <module name="HashTable" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.academits.ignatkov.list_main.*" />
+          <option name="PATTERN" value="ru.academits.ignatkov.hashtable_main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -130,17 +136,17 @@
     <list>
       <item itemvalue="Application.Main (1)" />
       <item itemvalue="Application.Main (3)" />
-      <item itemvalue="Application.Main (4)" />
       <item itemvalue="Application.Main (5)" />
       <item itemvalue="Application.MainCsv" />
+      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main (5)" />
         <item itemvalue="Application.Main (3)" />
         <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.MainCsv" />
-        <item itemvalue="Application.Main (4)" />
       </list>
     </recent_temporary>
   </component>
