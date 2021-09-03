@@ -27,7 +27,7 @@ public class Main {
 
         System.out.println("Число столбцов матрицы matrix2 равно: " + matrix2.getColumnsCount());
 
-        Vector vector4 = new Vector(new double[]{1,2});
+        Vector vector4 = new Vector(new double[]{1, 2});
         System.out.println();
         matrix2.setRowByIndex(2, vector4);
         System.out.println(matrix2);

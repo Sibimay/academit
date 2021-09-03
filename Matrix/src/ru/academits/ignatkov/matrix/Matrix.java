@@ -91,7 +91,7 @@ public class Matrix {
 
         if (index >= rows.length) {
             throw new IndexOutOfBoundsException("Указанный индекс больше или равен числу строк матрицы." +
-                    " Индекс = " + index + ", размер матрицы " + rows.length);
+                    " Индекс = " + index + ", количество строк матрицы " + rows.length);
         }
 
         return new Vector(rows[index]);
@@ -104,12 +104,12 @@ public class Matrix {
 
         if (index >= rows.length) {
             throw new IndexOutOfBoundsException("Указанный индекс больше или равен числу строк матрицы" +
-                    " Индекс = " + index + ", размер матрицы " + rows.length);
+                    " Индекс = " + index + ", количество строк матрицы " + rows.length);
         }
 
         if (vector.getSize() != getColumnsCount()) {
             throw new IllegalArgumentException("Размер вектора не совпадает с длиной строки." +
-                    " Размер вектора " + vector.getSize() + ", длина строки " + rows.length);
+                    " Размер вектора " + vector.getSize() + ", длина строки " + getColumnsCount());
         }
 
         rows[index] = new Vector(vector);
@@ -121,7 +121,8 @@ public class Matrix {
         }
 
         if (index >= getColumnsCount()) {
-            throw new IndexOutOfBoundsException("Указанный индекс больше или равен числу столбцов матрицы. Индекс = " + index);
+            throw new IndexOutOfBoundsException("Указанный индекс больше или равен числу столбцов матрицы." +
+                    " Индекс = " + index + "количество столбцов матрицы: " + getColumnsCount());
         }
 
         Vector column = new Vector(rows.length);

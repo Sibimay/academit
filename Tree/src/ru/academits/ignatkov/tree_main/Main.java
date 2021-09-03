@@ -1,6 +1,5 @@
 package ru.academits.ignatkov.tree_main;
 
-
 import ru.academits.ignatkov.tree.Tree;
 
 public class Main {

@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="Add lambda.iml to git">
-      <change afterPath="$PROJECT_DIR$/Tree/Tree.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tree/src/ru/academits/ignatkov/tree/Tree.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tree/src/ru/academits/ignatkov/tree/TreeNode.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Tree/src/ru/academits/ignatkov/tree_main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Matrix/src/ru/academits/ignatkov/matrix_main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tree/src/ru/academits/ignatkov/tree_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tree/src/ru/academits/ignatkov/tree_main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
