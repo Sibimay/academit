@@ -12,12 +12,12 @@ public class MyHashTable<E> implements Collection<E> {
         lists = (ArrayList<E>[]) new ArrayList[10];
     }
 
-    @SuppressWarnings("unchecked")
     public MyHashTable(int capacity) {
         if (capacity <= 0) {
             throw new IllegalArgumentException("Вместимость списка не может быть меньше или равна нулю. Вместимость списка " + capacity);
         }
 
+        //noinspection unchecked
         lists = (ArrayList<E>[]) new ArrayList[capacity];
     }
 
@@ -98,7 +98,6 @@ public class MyHashTable<E> implements Collection<E> {
     }
 
     @Override
-    @SuppressWarnings({"SuspiciousSystemArraycopy", "unchecked"})
     public <E1> E1[] toArray(E1[] a) {
         if (a == null) {
             throw new NullPointerException("Массив пустой!");
@@ -107,9 +106,11 @@ public class MyHashTable<E> implements Collection<E> {
         Object[] items = toArray();
 
         if (a.length < size) {
+            //noinspection unchecked
             return (E1[]) Arrays.copyOf(items, size, a.getClass());
         }
 
+        //noinspection SuspiciousSystemArraycopy
         System.arraycopy(items, 0, a, 0, size);
 
         if (a.length > size) {
@@ -184,7 +185,7 @@ public class MyHashTable<E> implements Collection<E> {
     }
 
     @Override
-    @SuppressWarnings("SuspiciousMethodCalls")
+//    @SuppressWarnings("SuspiciousMethodCalls")
     public boolean removeAll(Collection<?> c) {
         if (c == null) {
             throw new NullPointerException("Пустая коллекция!");
@@ -199,6 +200,7 @@ public class MyHashTable<E> implements Collection<E> {
         for (Object e : c) {
             int index = getElementIndex(e);
 
+            //noinspection SuspiciousMethodCalls
             while (lists[index] != null && lists[index].remove(c)) {
                 size--;
                 modCount++;

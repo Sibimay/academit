@@ -23,16 +23,16 @@ public class Main {
                 new Person("Anna", 25)
         ));
 
-        List<String> personsWithDistinctNames = persons.stream()
+        List<String> distinctNames = persons.stream()
                 .map(Person::getName)
                 .distinct()
                 .collect(Collectors.toList());
-        System.out.println("Список уникальных имен: " + personsWithDistinctNames);
+        System.out.println("Список уникальных имен: " + distinctNames);
 
-        String distinctNamesOtherFormat = personsWithDistinctNames.stream()
+        String distinctNamesString = distinctNames.stream()
                 .collect(Collectors.joining(", ", "Имена: ", "."));
 
-        System.out.println(distinctNamesOtherFormat);
+        System.out.println(distinctNamesString);
 
         List<Person> personsUnder18 = persons
                 .stream()
@@ -40,14 +40,13 @@ public class Main {
                 .collect(Collectors.toList());
         Double personsUnder18AverageAge = personsUnder18
                 .stream()
-                .filter(p -> p.getAge() < 18)
                 .collect(averagingDouble(Person::getAge));
         System.out.println("Средний возраст до 18 лет: " + personsUnder18AverageAge);
 
-        Map<String, Double> personsAverageAgeGroupedByNames = persons
+        Map<String, Double> averageAgesByNames = persons
                 .stream()
                 .collect(Collectors.groupingBy(Person::getName, averagingDouble(Person::getAge)));
-        personsAverageAgeGroupedByNames.forEach((k, v) -> System.out.println("Средний возраст: " + k + " - " + v));
+        averageAgesByNames.forEach((k, v) -> System.out.println("Средний возраст: " + k + " - " + v));
 
         List<Person> personsByAgeFrom20To45 = persons
                 .stream()

@@ -12,7 +12,6 @@ public class Tree<T> {
         return size;
     }
 
-    @SuppressWarnings("unchecked")
     private int compare(T data1, T data2) {
         if (data1 == null) {
             if (data2 == null) {
@@ -26,6 +25,7 @@ public class Tree<T> {
             return 1;
         }
 
+        //noinspection unchecked
         return ((Comparable<T>) data1).compareTo(data2);
     }
 
