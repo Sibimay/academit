@@ -1,186 +1,194 @@
 package ru.academits.ignatkov.list;
 
+import java.util.NoSuchElementException;
+import java.util.Objects;
+
 public class SinglyLinkedList<E> {
     private ListItem<E> head;
-    private int count;
+    private int size;
 
     public int getSize() {
-        return count;
+        return size;
     }
 
-    public E getFirstElement() {
+    public E getFirst() {
         checkListEmpty();
 
         return head.getData();
     }
 
-    public E getDataByIndex(int index) {
-        return getElementByIndex(index).getData();
+    public E getData(int index) {
+        return getItem(index).getData();
     }
 
-    public E setElementDataByIndex(int index, E data) {
-        checkIndex(index, count);
+    public E setData(int index, E data) {
+        checkIndex(index, size);
 
-        ListItem<E> element = getElementByIndex(index);
-        E oldData = element.getData();
+        ListItem<E> item = getItem(index);
+        E oldData = item.getData();
 
-        element.setData(data);
+        item.setData(data);
 
         return oldData;
     }
 
-    public E deleteElementByIndex(int index) {
-        checkIndex(index, count);
+    public E delete(int index) {
+        checkIndex(index, size);
 
-        ListItem<E> element = getElementByIndex(index);
-        E elementData = element.getData();
+        ListItem<E> item = getItem(index);
+        E deletedData = item.getData();
 
         if (index == 0) {
-            deleteFirstElement();
+            deleteFirst();
         } else {
-            ListItem<E> previous = getElementByIndex(index - 1);
-            previous.setNext(element.getNext());
+            ListItem<E> previous = getItem(index - 1);
+            previous.setNext(item.getNext());
+            size--;
         }
 
-        count--;
 
-        return elementData;
+        return deletedData;
     }
 
-    private ListItem<E> getElementByIndex(int index) {
-        checkIndex(index, count);
+    private ListItem<E> getItem(int index) {
+        checkIndex(index, size);
 
-        ListItem<E> element = head;
+        ListItem<E> item = head;
         int i = 0;
 
         while (i != index) {
-            element = element.getNext();
+            item = item.getNext();
             i++;
         }
 
-        return element;
+        return item;
     }
 
-    public void addFirstElement(E data) {
+    public void addFirst(E data) {
         head = new ListItem<>(data, head);
-        count++;
+        size++;
     }
 
-    public void addElementByIndex(int index, E data) {
-        checkIndex(index, count + 1);
+    public void add(int index, E data) {
+        checkIndex(index, size + 1);
 
         if (index == 0) {
-            addFirstElement(data);
-        } else {
-            ListItem<E> previousElement = getElementByIndex(index - 1);
-            previousElement.setNext(new ListItem<>(data, previousElement.getNext()));
-            count++;
-        }
-    }
-
-    public boolean deleteItemByData(E data) {
-        ListItem<E> element = head;
-        int index = 0;
-
-        while (element.getData() != data) {
-            element = element.getNext();
-
-            if (element == null) {
-                return false;
-            }
-
-            index++;
-        }
-
-        deleteElementByIndex(index);
-
-        return true;
-    }
-
-    public E deleteFirstElement() {
-        checkListEmpty();
-
-        E oldData = head.getData();
-
-        head = head.getNext();
-        count--;
-
-        return oldData;
-    }
-
-    public void reverse() {
-        if (count == 0) {
+            addFirst(data);
             return;
         }
 
-        for (ListItem<E> element = head.getNext(), previous = head, beforePrevious = null;
-             element != null; previous = element, element = element.getNext()) {
+        ListItem<E> previousItem = getItem(index - 1);
+        previousItem.setNext(new ListItem<>(data, previousItem.getNext()));
+        size++;
+    }
+
+    public boolean delete(E data) {
+        for (ListItem<E> current = head, previous = null; current != null; previous = current, current = current.getNext()) {
+            if (Objects.equals(current.getData(), data)) {
+                if (previous != null) {
+                    current = previous;
+                    current.setNext(current.getNext().getNext());
+                } else {
+                    head = head.getNext();
+                }
+
+                size--;
+
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public E deleteFirst() {
+        checkListEmpty();
+
+        E deletedData = head.getData();
+
+        head = head.getNext();
+        size--;
+
+        return deletedData;
+    }
+
+    public void reverse() {
+        if (size == 0) {
+            return;
+        }
+
+        for (ListItem<E> current = head.getNext(), previous = head, beforePrevious = null;
+             current != null; previous = current, current = current.getNext()) {
             previous.setNext(beforePrevious);
             beforePrevious = previous;
 
-            if (element.getNext() == null) {
-                head = element;
+            if (current.getNext() == null) {
+                head = current;
                 head.setNext(previous);
                 return;
             }
         }
     }
 
-    public SinglyLinkedList<E> cloneList() {
+    public SinglyLinkedList<E> copy() {
         SinglyLinkedList<E> copiedList = new SinglyLinkedList<>();
 
         if (head == null) {
             return copiedList;
         }
 
-        ListItem<E> copiedListElement = new ListItem<>(head.getData(), null);
+        ListItem<E> copiedListItem = new ListItem<>(head.getData(), null);
 
-        copiedList.head = copiedListElement;
-        ListItem<E> element = head.getNext();
+        copiedList.head = copiedListItem;
+        ListItem<E> item = head.getNext();
 
-        while (element != null) {
-            ListItem<E> nextCopiedListElement = new ListItem<>(element.getData(), null);
-            copiedListElement.setNext(nextCopiedListElement);
-            copiedListElement = nextCopiedListElement;
+        while (item != null) {
+            ListItem<E> nextCopiedListItem = new ListItem<>(item.getData(), null);
+            copiedListItem.setNext(nextCopiedListItem);
+            copiedListItem = nextCopiedListItem;
 
-            element = element.getNext();
+            item = item.getNext();
         }
 
-        copiedList.count = count;
+        copiedList.size = size;
 
         return copiedList;
     }
 
-    private void checkIndex(int index, int newCount) {
+    private void checkIndex(int index, int maxIndex) {
         if (index < 0) {
             throw new IndexOutOfBoundsException("Указанный индекс меньше нуля. Индекс = " + index);
         }
 
-        if (index > newCount) {
+        if (index >= maxIndex) {
             throw new IndexOutOfBoundsException("Указанный индекс больше или равен размеру списка." +
-                    " Индекс = " + index + ", размер списка = " + newCount);
+                    " Индекс = " + index + ", размер списка = " + maxIndex);
         }
     }
 
     private void checkListEmpty() {
-        if (count == 0) {
-            throw new NullPointerException("Список пуст");
+        if (size == 0) {
+            throw new NoSuchElementException("Список пуст");
         }
     }
 
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder("[");
-        ListItem<E> element = head;
+        ListItem<E> item = head;
 
-        for (int i = 0; i < count; i++) {
-            stringBuilder.append(element.getData());
+        if (size == 0) {
+            return stringBuilder.append("]").toString();
+        }
 
-            if (i != count - 1) {
+        for (int i = 0; i < size; i++) {
+            stringBuilder.append(item.getData());
+
+            if (i != size - 1) {
                 stringBuilder.append(", ");
             }
 
-            element = element.getNext();
+            item = item.getNext();
         }
 
         stringBuilder.append("]");

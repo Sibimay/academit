@@ -1,12 +1,8 @@
 package ru.academits.ignatkov.list;
 
-public class ListItem<E> {
+class ListItem<E> {
     private E data;
     private ListItem<E> next;
-
-    public ListItem() {
-
-    }
 
     public ListItem(E data) {
         this.data = data;
