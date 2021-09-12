@@ -1,18 +1,32 @@
 package ru.academits.ignatkov.tree;
 
+import java.util.Comparator;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.function.Consumer;
 
 public class Tree<T> {
     private TreeNode<T> root;
     private int size;
+    private Comparator<T> comparator;
+
+    public Tree() {
+    }
+
+    public Tree(Comparator<T> comparator) {
+        this.comparator = comparator;
+    }
 
     public int getSize() {
         return size;
     }
 
     private int compare(T data1, T data2) {
+        if (comparator != null) {
+            return comparator.compare(data1, data2);
+        }
+
         if (data1 == null) {
             if (data2 == null) {
                 return 0;
@@ -33,11 +47,13 @@ public class Tree<T> {
         TreeNode<T> node = root;
 
         while (node != null) {
-            if (compare(data, node.getData()) == 0) {
+            int compareResult = compare(data, node.getData());
+
+            if (compareResult == 0) {
                 return node;
             }
 
-            if (compare(data, node.getData()) < 0) {
+            if (compareResult < 0) {
                 TreeNode<T> leftNode = node.getLeft();
 
                 if (leftNode != null) {
@@ -171,6 +187,7 @@ public class Tree<T> {
             minParent.setLeft(minNode.getRight());
             minNode.setRight(nodeToRemove.getRight());
         }
+
         minNode.setLeft(nodeToRemove.getLeft());
 
         if (parentNode == null) {
@@ -186,7 +203,7 @@ public class Tree<T> {
         size--;
     }
 
-    public void widthRound() {
+    public void traverseWidth(Consumer<T> consumer) {
         if (root == null) {
             return;
         }
@@ -197,6 +214,7 @@ public class Tree<T> {
 
         while (!queue.isEmpty()) {
             TreeNode<T> currentNode = queue.remove();
+            consumer.accept(currentNode.getData());
 
             if (currentNode.getLeft() != null) {
                 queue.add(currentNode.getLeft());
@@ -208,21 +226,23 @@ public class Tree<T> {
         }
     }
 
-    public void depthRoundRecursion(TreeNode<T> currentNode) {
+    public void traverseDepthRecursion(TreeNode<T> currentNode, Consumer<T> consumer) {
         if (root == null) {
             return;
         }
 
+        consumer.accept(currentNode.getData());
+
         if (currentNode.getLeft() != null) {
-            depthRoundRecursion(currentNode.getLeft());
+            traverseDepthRecursion(currentNode.getLeft(), consumer);
         }
 
         if (currentNode.getRight() != null) {
-            depthRoundRecursion(currentNode.getRight());
+            traverseDepthRecursion(currentNode.getRight(), consumer);
         }
     }
 
-    public void depthRound() {
+    public void traverseDepth(Consumer<T> consumer) {
         if (root == null) {
             return;
         }
@@ -233,10 +253,12 @@ public class Tree<T> {
 
         while (!stack.isEmpty()) {
             TreeNode<T> currentNode = stack.removeLast();
+            consumer.accept(currentNode.getData());
 
             if (currentNode.getRight() != null) {
                 stack.addLast(currentNode.getRight());
             }
+
             if (currentNode.getLeft() != null) {
                 stack.addLast(currentNode.getLeft());
             }
