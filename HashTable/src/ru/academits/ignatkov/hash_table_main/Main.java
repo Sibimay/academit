@@ -1,6 +1,6 @@
-package ru.academits.ignatkov.hashtable_main;
+package ru.academits.ignatkov.hash_table_main;
 
-import ru.academits.ignatkov.hashtable.MyHashTable;
+import ru.academits.ignatkov.hash_table.MyHashTable;
 
 public class Main {
     public static void main(String[] args) {

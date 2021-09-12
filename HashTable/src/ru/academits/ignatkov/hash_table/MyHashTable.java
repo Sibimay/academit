@@ -1,10 +1,10 @@
-package ru.academits.ignatkov.hashtable;
+package ru.academits.ignatkov.hash_table;
 
 import java.util.*;
 
 public class MyHashTable<E> implements Collection<E> {
-    private int size;
     private final ArrayList<E>[] lists;
+    private int size;
     private int modCount;
 
     @SuppressWarnings("unchecked")
@@ -12,13 +12,13 @@ public class MyHashTable<E> implements Collection<E> {
         lists = (ArrayList<E>[]) new ArrayList[10];
     }
 
-    public MyHashTable(int capacity) {
-        if (capacity <= 0) {
-            throw new IllegalArgumentException("Вместимость списка не может быть меньше или равна нулю. Вместимость списка " + capacity);
+    public MyHashTable(int arrayLength) {
+        if (arrayLength <= 0) {
+            throw new IllegalArgumentException("Длина массива не может быть меньше или равна нулю. Длина массива " + arrayLength);
         }
 
         //noinspection unchecked
-        lists = (ArrayList<E>[]) new ArrayList[capacity];
+        lists = (ArrayList<E>[]) new ArrayList[arrayLength];
     }
 
     @Override
@@ -33,13 +33,9 @@ public class MyHashTable<E> implements Collection<E> {
 
     @Override
     public boolean contains(Object o) {
-        int index = getElementIndex(o);
+        int index = getIndex(o);
 
-        if (lists[index] != null) {
-            return lists[index].contains(o);
-        }
-
-        return false;
+        return lists[index] != null && lists[index].contains(o);
     }
 
     @Override
@@ -48,50 +44,52 @@ public class MyHashTable<E> implements Collection<E> {
     }
 
     private class MyIterator implements Iterator<E> {
-        private int currentIndex = 0;
-        private final int myModCount = modCount;
-        private int currentListIndex = -1;
-        private int countElement = 0;
+        private final int initialModCount = modCount;
+        private int arrayIndex = 0;
+        private int listIndex = -1;
+        private int tableIndex = -1;
 
-        @Override
         public boolean hasNext() {
-            return countElement != size;
+            return listIndex + 1 < size;
         }
 
-        @Override
         public E next() {
             if (!hasNext()) {
-                throw new NoSuchElementException("Коллекция кончилась!");
+                throw new NoSuchElementException("End of the table");
             }
 
-            if (myModCount != modCount) {
-                throw new ConcurrentModificationException("Список изменился!");
+            if (initialModCount != modCount) {
+                throw new ConcurrentModificationException("HashTable was changed during iteration");
             }
 
-            if (lists[currentIndex] == null || currentListIndex == lists[currentIndex].size() - 1) {
-                currentListIndex = -1;
-                currentIndex++;
+            while (hasNext()) {
+                if (lists[arrayIndex] == null) {
+                    arrayIndex++;
+                } else {
+                    tableIndex++;
+
+                    if (tableIndex == lists[arrayIndex].size()) {
+                        arrayIndex++;
+                        tableIndex = -1;
+                    } else {
+                        listIndex++;
+                        return lists[arrayIndex].get(tableIndex);
+                    }
+                }
             }
 
-            while (lists[currentIndex] == null || lists[currentIndex].size() - 1 == currentListIndex) {
-                currentIndex++;
-            }
-
-            countElement++;
-            currentListIndex++;
-
-            return lists[currentIndex].get(currentListIndex);
+            return null;
         }
     }
 
     @Override
     public Object[] toArray() {
         Object[] items = new Object[size];
-        int index = 0;
+        int i = 0;
 
         for (E element : this) {
-            items[index] = element;
-            index++;
+            items[i] = element;
+            i++;
         }
 
         return items;
@@ -122,7 +120,7 @@ public class MyHashTable<E> implements Collection<E> {
 
     @Override
     public boolean add(E e) {
-        int index = getElementIndex(e);
+        int index = getIndex(e);
 
         if (lists[index] == null) {
             lists[index] = new ArrayList<>();
@@ -138,7 +136,7 @@ public class MyHashTable<E> implements Collection<E> {
     @Override
     public boolean remove(Object o) {
         boolean isDeleted = false;
-        int index = getElementIndex(o);
+        int index = getIndex(o);
 
         if (lists[index] != null) {
             isDeleted = lists[index].remove(o);
@@ -185,7 +183,6 @@ public class MyHashTable<E> implements Collection<E> {
     }
 
     @Override
-//    @SuppressWarnings("SuspiciousMethodCalls")
     public boolean removeAll(Collection<?> c) {
         if (c == null) {
             throw new NullPointerException("Пустая коллекция!");
@@ -195,25 +192,27 @@ public class MyHashTable<E> implements Collection<E> {
             return false;
         }
 
-        int tmp = modCount;
+        int initialModCount = modCount;
 
-        for (Object e : c) {
-            int index = getElementIndex(e);
+        for (Collection<E> list : lists) {
+            if (list != null) {
+                int initialSize = list.size();
 
-            //noinspection SuspiciousMethodCalls
-            while (lists[index] != null && lists[index].remove(c)) {
-                size--;
-                modCount++;
+                if (list.removeAll(c)) {
+                    size -= initialSize - list.size();
+                    modCount++;
+                }
             }
         }
 
-        return modCount != tmp;
+        return modCount != initialModCount;
     }
 
-    private int getElementIndex(Object element) {
+    private int getIndex(Object element) {
         if (element == null) {
             return 0;
         }
+
         return Math.abs(element.hashCode() % lists.length);
     }
 
@@ -223,24 +222,28 @@ public class MyHashTable<E> implements Collection<E> {
             throw new NullPointerException("Пустая коллекция!");
         }
 
-        int tmp = modCount;
+        int initialModCount = modCount;
 
-        for (Collection<E> p : lists) {
-            if (p != null) {
-                int currentSize = p.size();
+        for (Collection<E> list : lists) {
+            if (list != null) {
+                int initialSize = list.size();
 
-                if (p.retainAll(c)) {
-                    size -= currentSize - p.size();
+                if (list.retainAll(c)) {
+                    size -= initialSize - list.size();
                     modCount++;
                 }
             }
         }
 
-        return modCount != tmp;
+        return modCount != initialModCount;
     }
 
     @Override
     public void clear() {
+        if (size == 0) {
+            return;
+        }
+
         Arrays.fill(lists, null);
 
         size = 0;
@@ -249,17 +252,18 @@ public class MyHashTable<E> implements Collection<E> {
 
     @Override
     public String toString() {
-        StringBuilder str = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
 
         for (int i = 0; i < lists.length; i++) {
             if (lists[i] != null) {
-                str.append("Ключ ")
-                        .append(i).append(": ")
-                        .append(lists[i].toString())
+                stringBuilder.append("Ключ ")
+                        .append(i)
+                        .append(": ")
+                        .append(lists[i])
                         .append(System.lineSeparator());
             }
         }
 
-        return str.toString();
+        return stringBuilder.toString();
     }
 }

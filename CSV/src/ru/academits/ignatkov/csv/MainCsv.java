@@ -55,7 +55,6 @@ public class MainCsv {
 
                     if (i == line.length() - 1 && !isCellCreated) {
                         writer.print(line.charAt(i) + "</td></tr>");
-                        isCellCreated = false;
                         continue;
                     }
 
@@ -83,7 +82,6 @@ public class MainCsv {
                     if (line.charAt(i) == ',' && !isCellCreated) {
                         writer.print("</td><td>");
                         cellsInRow++;
-                        isCellCreated = false;
                         continue;
                     }
 
