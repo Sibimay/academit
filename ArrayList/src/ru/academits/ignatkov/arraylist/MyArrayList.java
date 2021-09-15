@@ -3,17 +3,18 @@ package ru.academits.ignatkov.arraylist;
 import java.util.*;
 
 public class MyArrayList<E> implements List<E> {
+    private static final int DEF_CAPACITY = 10;
     private E[] elements;
     private int size;
     private int modCount;
 
     public MyArrayList() {
-        this(10);
+        this(DEF_CAPACITY);
     }
 
     public MyArrayList(int capacity) {
         if (capacity < 0) {
-            throw new IllegalArgumentException("Вместимость списка не может быть меньше нуля");
+            throw new IllegalArgumentException("Вместимость списка не может быть меньше нуля. Вместимость списка " + capacity);
         }
 
         //noinspection unchecked
@@ -124,7 +125,7 @@ public class MyArrayList<E> implements List<E> {
 
     @Override
     public boolean addAll(int index, Collection<? extends E> collection) {
-        checkIndex(index, size + collection.size());
+        checkIndex(index, size + collection.size() + 1);
         ensureCapacity(size + collection.size());
 
         System.arraycopy(elements, index, elements, index + collection.size(), size - index);
@@ -157,17 +158,14 @@ public class MyArrayList<E> implements List<E> {
     }
 
     @Override
-    public boolean retainAll(Collection<?> c) {
+    public boolean retainAll(Collection<?> collection) {
         int currentSize = size;
 
         for (int i = 0; i < size; i++) {
-            if (c.contains(elements[i])) {
-                continue;
+            if (collection.contains(elements[i])) {
+                remove(i);
+                i--;
             }
-
-            remove(i);
-            i--;
-            modCount++;
         }
 
         return currentSize != size;
@@ -222,14 +220,14 @@ public class MyArrayList<E> implements List<E> {
     @Override
     public E remove(int index) {
         checkIndex(index, size);
-        E deletedElement = elements[index];
+        E removedElement = elements[index];
 
         System.arraycopy(elements, index + 1, elements, index, size - index - 1);
         elements[size - 1] = null;
         size--;
         modCount++;
 
-        return deletedElement;
+        return removedElement;
     }
 
     @Override
@@ -298,14 +296,14 @@ public class MyArrayList<E> implements List<E> {
         }
     }
 
-    private void checkIndex(int index, int maxIndex) {
+    private void checkIndex(int index, int futureListSize) {
         if (index < 0) {
             throw new IndexOutOfBoundsException("Указанный индекс меньше нуля. Индекс = " + index);
         }
 
-        if (index >= maxIndex) {
-            throw new IndexOutOfBoundsException("Указанный индекс больше размера списка." +
-                    " Индекс = " + index + ", максимальный индекс = " + maxIndex);
+        if (index >= futureListSize) {
+            throw new IndexOutOfBoundsException("Указанный индекс больше размера списка после преобразования." +
+                    " Индекс = " + index + ", размер списка после преобразования = " + futureListSize);
         }
     }
 
