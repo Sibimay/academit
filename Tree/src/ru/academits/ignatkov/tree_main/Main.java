@@ -19,7 +19,7 @@ public class Main {
         System.out.println("getSize() = " + tree.getSize());
 
         tree.traverseDepth(print);
-        tree.traverseDepthRecursion(tree.getRoot(), print);
+        tree.traverseDepthRecursion(print);
         tree.traverseWidth(print);
     }
 }

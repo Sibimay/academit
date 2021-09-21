@@ -3,7 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="Add lambda.iml to git">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist/MyArrayList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/src/ru/academits/ignatkov/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/src/ru/academits/ignatkov/graph/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/src/ru/academits/ignatkov/graph_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/src/ru/academits/ignatkov/graph_main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HashTable/src/ru/academits/ignatkov/hash_table/MyHashTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/HashTable/src/ru/academits/ignatkov/hash_table/MyHashTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list/ListItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list/ListItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list/SinglyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list/SinglyLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list_main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tree/src/ru/academits/ignatkov/tree/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tree/src/ru/academits/ignatkov/tree/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tree/src/ru/academits/ignatkov/tree_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tree/src/ru/academits/ignatkov/tree_main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,12 +69,12 @@
     </key>
   </component>
   <component name="RunManager" selected="Application.Main (4)">
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.lambda_main.Main" />
-      <module name="Lambda" />
+    <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.tree_main.Main" />
+      <module name="Tree" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.academits.ignatkov.lambda_main.*" />
+          <option name="PATTERN" value="ru.academits.ignatkov.tree_main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -129,18 +136,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main (4)" />
-      <item itemvalue="Application.Main (1)" />
       <item itemvalue="Application.Main (3)" />
       <item itemvalue="Application.Main (5)" />
       <item itemvalue="Application.Main" />
+      <item itemvalue="Application.Main (2)" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main (4)" />
-        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main (2)" />
         <item itemvalue="Application.Main (5)" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main (3)" />
-        <item itemvalue="Application.Main (1)" />
       </list>
     </recent_temporary>
   </component>

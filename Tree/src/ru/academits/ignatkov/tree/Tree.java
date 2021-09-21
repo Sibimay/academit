@@ -43,7 +43,7 @@ public class Tree<T> {
         return ((Comparable<T>) data1).compareTo(data2);
     }
 
-    public TreeNode<T> getNode(T data) {
+    private TreeNode<T> getNode(T data) {
         TreeNode<T> node = root;
 
         while (node != null) {
@@ -226,7 +226,11 @@ public class Tree<T> {
         }
     }
 
-    public void traverseDepthRecursion(TreeNode<T> currentNode, Consumer<T> consumer) {
+    public void traverseDepthRecursion(Consumer<T> consumer) {
+        traverseDepthRecursion(root, consumer);
+    }
+
+    private void traverseDepthRecursion(TreeNode<T> currentNode, Consumer<T> consumer) {
         if (root == null) {
             return;
         }
@@ -263,9 +267,5 @@ public class Tree<T> {
                 stack.addLast(currentNode.getLeft());
             }
         }
-    }
-
-    public TreeNode<T> getRoot() {
-        return root;
     }
 }

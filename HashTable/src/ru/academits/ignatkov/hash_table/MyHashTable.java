@@ -3,13 +3,13 @@ package ru.academits.ignatkov.hash_table;
 import java.util.*;
 
 public class MyHashTable<E> implements Collection<E> {
+    private static final int DEFAULT_CAPACITY = 10;
     private final ArrayList<E>[] lists;
     private int size;
     private int modCount;
 
-    @SuppressWarnings("unchecked")
     public MyHashTable() {
-        lists = (ArrayList<E>[]) new ArrayList[10];
+        this(DEFAULT_CAPACITY);
     }
 
     public MyHashTable(int arrayLength) {
@@ -46,11 +46,11 @@ public class MyHashTable<E> implements Collection<E> {
     private class MyIterator implements Iterator<E> {
         private final int initialModCount = modCount;
         private int arrayIndex = 0;
-        private int listIndex = -1;
         private int tableIndex = -1;
+        private int listIndex = -1;
 
         public boolean hasNext() {
-            return listIndex + 1 < size;
+            return tableIndex + 1 < size;
         }
 
         public E next() {
@@ -66,14 +66,14 @@ public class MyHashTable<E> implements Collection<E> {
                 if (lists[arrayIndex] == null) {
                     arrayIndex++;
                 } else {
-                    tableIndex++;
+                    listIndex++;
 
-                    if (tableIndex == lists[arrayIndex].size()) {
+                    if (listIndex == lists[arrayIndex].size()) {
                         arrayIndex++;
-                        tableIndex = -1;
+                        listIndex = -1;
                     } else {
-                        listIndex++;
-                        return lists[arrayIndex].get(tableIndex);
+                        tableIndex++;
+                        return lists[arrayIndex].get(listIndex);
                     }
                 }
             }
@@ -87,8 +87,8 @@ public class MyHashTable<E> implements Collection<E> {
         Object[] items = new Object[size];
         int i = 0;
 
-        for (E element : this) {
-            items[i] = element;
+        for (E item : this) {
+            items[i] = item;
             i++;
         }
 
@@ -135,23 +135,20 @@ public class MyHashTable<E> implements Collection<E> {
 
     @Override
     public boolean remove(Object o) {
-        boolean isDeleted = false;
         int index = getIndex(o);
-
-        if (lists[index] != null) {
-            isDeleted = lists[index].remove(o);
-        }
 
         if (lists[index].size() == 0) {
             lists[index] = null;
         }
 
-        if (isDeleted) {
+        if (lists[index] != null) {
             size--;
             modCount++;
+
+            return lists[index].remove(o);
         }
 
-        return isDeleted;
+        return false;
     }
 
     @Override
@@ -171,7 +168,7 @@ public class MyHashTable<E> implements Collection<E> {
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
-        if (size == 0) {
+        if (c.size() == 0) {
             return false;
         }
 
@@ -184,58 +181,60 @@ public class MyHashTable<E> implements Collection<E> {
 
     @Override
     public boolean removeAll(Collection<?> c) {
+        int currentSize = size;
+
         if (c == null) {
-            throw new NullPointerException("Пустая коллекция!");
+            throw new NullPointerException("Передана пустая коллекция!");
         }
 
         if (c.size() == 0) {
             return false;
         }
 
-        int initialModCount = modCount;
-
-        for (Collection<E> list : lists) {
-            if (list != null) {
-                int initialSize = list.size();
-
-                if (list.removeAll(c)) {
-                    size -= initialSize - list.size();
-                    modCount++;
-                }
+        for (ArrayList<E> indexList : lists) {
+            if (indexList != null) {
+                size -= indexList.size();
+                indexList.removeAll(c);
+                size += indexList.size();
             }
         }
 
-        return modCount != initialModCount;
+        if (currentSize != size) {
+            modCount++;
+        }
+
+        return currentSize != size;
     }
 
-    private int getIndex(Object element) {
-        if (element == null) {
+    private int getIndex(Object item) {
+        if (item == null) {
             return 0;
         }
 
-        return Math.abs(element.hashCode() % lists.length);
+        return Math.abs(item.hashCode() % lists.length);
     }
 
     @Override
     public boolean retainAll(Collection<?> c) {
         if (c == null) {
-            throw new NullPointerException("Пустая коллекция!");
+            throw new NullPointerException("Передана пустая коллекция!");
         }
 
-        int initialModCount = modCount;
+        int currentSize = size;
 
-        for (Collection<E> list : lists) {
-            if (list != null) {
-                int initialSize = list.size();
-
-                if (list.retainAll(c)) {
-                    size -= initialSize - list.size();
-                    modCount++;
-                }
+        for (ArrayList<E> indexList : lists) {
+            if (indexList != null) {
+                size -= indexList.size();
+                indexList.retainAll(c);
+                size += indexList.size();
             }
         }
 
-        return modCount != initialModCount;
+        if (currentSize != size) {
+            modCount++;
+        }
+
+        return currentSize != size;
     }
 
     @Override

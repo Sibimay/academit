@@ -3,12 +3,20 @@ package ru.academits.ignatkov.graph;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.Queue;
-import java.util.function.Consumer;
+import java.util.function.IntConsumer;
 
 public class Graph {
     private final int[][] matrix;
 
     public Graph(int[][] matrix) {
+        int rowsCount = matrix.length;
+        int columnsCount = matrix[0].length;
+
+        if (rowsCount != columnsCount) {
+            throw new UnsupportedOperationException("Матрица не квадратная. " +
+                    "Размеры матрицы: " + rowsCount + "x" + columnsCount);
+        }
+        
         this.matrix = matrix;
     }
 
@@ -16,7 +24,7 @@ public class Graph {
         return matrix.length;
     }
 
-    public void traverseWidth(Consumer<Integer> consumer) {
+    public void traverseWidth(IntConsumer consumer) {
         boolean[] visited = new boolean[matrix.length];
 
         Queue<Integer> queue = new LinkedList<>();
@@ -45,7 +53,11 @@ public class Graph {
         }
     }
 
-    public void traverseDepthRecursion(int currentNodeIndex, boolean[] visited, Consumer<Integer> consumer) {
+    public void traverseDepthRecursion(IntConsumer consumer) {
+        traverseDepthRecursion(0, new boolean[matrix.length], consumer);
+    }
+
+    private void traverseDepthRecursion(int currentNodeIndex, boolean[] visited, IntConsumer consumer) {
         visited[currentNodeIndex] = true;
         consumer.accept(currentNodeIndex);
 
@@ -62,29 +74,32 @@ public class Graph {
         }
     }
 
-    public void traverseDepth(Consumer<Integer> consumer) {
+    public void traverseDepth(IntConsumer consumer) {
         boolean[] visited = new boolean[matrix.length];
 
         Deque<Integer> stack = new LinkedList<>();
-        stack.add(0);
-        visited[0] = true;
 
-        while (!stack.isEmpty()) {
-            int currentNode = stack.remove();
-            consumer.accept(currentNode);
-
-            for (int i = matrix[currentNode].length - 1; i >= 1; i--) {
-                if (matrix[currentNode][i] != 0 && !visited[i]) {
-                    stack.add(i);
-                    visited[i] = true;
-                }
+        for (int nodeIndex = 0; nodeIndex < matrix.length; nodeIndex++) {
+            if (visited[nodeIndex]) {
+                continue;
             }
 
-            if (stack.isEmpty()) {
-                for (int i = 1; i < visited.length; i++) {
-                    if (!visited[i]) {
-                        stack.add(i);
-                        visited[i] = true;
+            stack.addLast(nodeIndex);
+
+            while (!stack.isEmpty()) {
+                int poppedIndex = stack.removeLast();
+
+                if (visited[poppedIndex]) {
+                    continue;
+                }
+
+                consumer.accept(poppedIndex);
+
+                visited[poppedIndex] = true;
+
+                for (int j = matrix.length - 1; j >= 0; j--) {
+                    if (j != poppedIndex && matrix[poppedIndex][j] > 0) {
+                        stack.addLast(j);
                     }
                 }
             }

@@ -3,7 +3,6 @@ package ru.academits.ignatkov.list_main;
 import ru.academits.ignatkov.list.SinglyLinkedList;
 
 public class Main {
-
     public static void main(String[] args) {
         SinglyLinkedList<Integer> singlyLinkedList = new SinglyLinkedList<>();
 
