@@ -1,16 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="A lot of changes in all modules">
+    <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="Fix mistakes">
+      <change afterPath="$PROJECT_DIR$/Temperature/Temperature.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/controller/ConverterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/main/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/model/CelsiusScale.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/model/FahrenheitScale.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/model/KelvinScale.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/model/Scale.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/view/ConverterView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist/MyArrayList.java" beforeDir="false" afterPath="$PROJECT_DIR$/ArrayList/src/ru/academits/ignatkov/arraylist/MyArrayList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/src/ru/academits/ignatkov/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/src/ru/academits/ignatkov/graph/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/src/ru/academits/ignatkov/graph_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/src/ru/academits/ignatkov/graph_main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HashTable/src/ru/academits/ignatkov/hash_table/MyHashTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/HashTable/src/ru/academits/ignatkov/hash_table/MyHashTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list/SinglyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list/SinglyLinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list_main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tree/src/ru/academits/ignatkov/tree/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tree/src/ru/academits/ignatkov/tree/Tree.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tree/src/ru/academits/ignatkov/tree_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tree/src/ru/academits/ignatkov/tree_main/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +21,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="package-info" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -68,13 +69,13 @@
       <recent name="$PROJECT_DIR$/CSV" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main (4)">
-    <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.tree_main.Main" />
-      <module name="Tree" />
+  <component name="RunManager" selected="Application.Main (1)">
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.main.Main" />
+      <module name="Temperature" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.academits.ignatkov.tree_main.*" />
+          <option name="PATTERN" value="ru.academits.ignatkov.main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -82,12 +83,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Main (3)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.arraylist_main.Main" />
-      <module name="ArrayList" />
+    <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.tree_main.Main" />
+      <module name="Tree" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="ru.academits.ignatkov.arraylist_main.*" />
+          <option name="PATTERN" value="ru.academits.ignatkov.tree_main.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -136,18 +137,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.Main (4)" />
-      <item itemvalue="Application.Main (3)" />
       <item itemvalue="Application.Main (5)" />
       <item itemvalue="Application.Main" />
       <item itemvalue="Application.Main (2)" />
+      <item itemvalue="Application.Main (1)" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main (4)" />
         <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main (5)" />
         <item itemvalue="Application.Main (2)" />
-        <item itemvalue="Application.Main (3)" />
       </list>
     </recent_temporary>
   </component>
@@ -258,7 +259,14 @@
       <option name="project" value="LOCAL" />
       <updated>1632236058198</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Fix mistakes">
+      <created>1632843444989</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1632843444989</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -295,7 +303,8 @@
     <MESSAGE value="Add lambda.iml to git" />
     <MESSAGE value="Fix Matrix setColumnByIndex and small bugs" />
     <MESSAGE value="A lot of changes in all modules" />
-    <option name="LAST_COMMIT_MESSAGE" value="A lot of changes in all modules" />
+    <MESSAGE value="Fix mistakes" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fix mistakes" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
