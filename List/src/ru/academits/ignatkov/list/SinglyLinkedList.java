@@ -31,11 +31,11 @@ public class SinglyLinkedList<E> {
     }
 
     public E delete(int index) {
+        checkIndex(index, size);
+
         if (index == 0) {
             return deleteFirst();
         }
-
-        checkIndex(index, size);
 
         ListItem<E> previous = getItem(index - 1);
         E deletedData = previous.getNext().getData();
@@ -81,8 +81,7 @@ public class SinglyLinkedList<E> {
         for (ListItem<E> current = head, previous = null; current != null; previous = current, current = current.getNext()) {
             if (Objects.equals(current.getData(), data)) {
                 if (previous != null) {
-                    current = previous;
-                    current.setNext(current.getNext().getNext());
+                    previous.setNext(previous.getNext().getNext());
                 } else {
                     head = head.getNext();
                 }
@@ -108,7 +107,7 @@ public class SinglyLinkedList<E> {
     }
 
     public void reverse() {
-        if (size == 0 || size == 1) {
+        if (size <= 1) {
             return;
         }
 
@@ -150,14 +149,14 @@ public class SinglyLinkedList<E> {
         return copiedList;
     }
 
-    private static void checkIndex(int index, int futureListSize) {
+    private static void checkIndex(int index, int maxIndex) {
         if (index < 0) {
             throw new IndexOutOfBoundsException("Указанный индекс меньше нуля. Индекс = " + index);
         }
 
-        if (index >= futureListSize) {
-            throw new IndexOutOfBoundsException("Указанный индекс больше размера списка после преобразования." +
-                    " Индекс = " + index + ", размер списка после преобразования = " + futureListSize);
+        if (index >= maxIndex) {
+            throw new IndexOutOfBoundsException("Указанный индекс больше максимально допустимого." +
+                    " Индекс = " + index + ", максимально допустимый индекс = " + maxIndex);
         }
     }
 

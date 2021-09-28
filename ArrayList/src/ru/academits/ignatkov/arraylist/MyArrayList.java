@@ -3,13 +3,14 @@ package ru.academits.ignatkov.arraylist;
 import java.util.*;
 
 public class MyArrayList<E> implements List<E> {
-    private static final int DEF_CAPACITY = 10;
+    private static final int DEFAULT_CAPACITY = 10;
+
     private E[] elements;
     private int size;
     private int modCount;
 
     public MyArrayList() {
-        this(DEF_CAPACITY);
+        this(DEFAULT_CAPACITY);
     }
 
     public MyArrayList(int capacity) {
@@ -125,7 +126,7 @@ public class MyArrayList<E> implements List<E> {
 
     @Override
     public boolean addAll(int index, Collection<? extends E> collection) {
-        checkIndex(index, size + collection.size() + 1);
+        checkIndex(index, size + 1);
         ensureCapacity(size + collection.size());
 
         System.arraycopy(elements, index, elements, index + collection.size(), size - index);
@@ -162,7 +163,7 @@ public class MyArrayList<E> implements List<E> {
         int currentSize = size;
 
         for (int i = 0; i < size; i++) {
-            if (collection.contains(elements[i])) {
+            if (!collection.contains(elements[i])) {
                 remove(i);
                 i--;
             }

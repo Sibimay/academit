@@ -3,13 +3,14 @@ package ru.academits.ignatkov.hash_table;
 import java.util.*;
 
 public class MyHashTable<E> implements Collection<E> {
-    private static final int DEFAULT_CAPACITY = 10;
+    private static final int DEFAULT_ARRAY_SIZE = 10;
+
     private final ArrayList<E>[] lists;
     private int size;
     private int modCount;
 
     public MyHashTable() {
-        this(DEFAULT_CAPACITY);
+        this(DEFAULT_ARRAY_SIZE);
     }
 
     public MyHashTable(int arrayLength) {
@@ -62,7 +63,7 @@ public class MyHashTable<E> implements Collection<E> {
                 throw new ConcurrentModificationException("HashTable was changed during iteration");
             }
 
-            while (hasNext()) {
+            while (true) {
                 if (lists[arrayIndex] == null) {
                     arrayIndex++;
                 } else {
@@ -77,8 +78,6 @@ public class MyHashTable<E> implements Collection<E> {
                     }
                 }
             }
-
-            return null;
         }
     }
 
@@ -98,7 +97,7 @@ public class MyHashTable<E> implements Collection<E> {
     @Override
     public <E1> E1[] toArray(E1[] a) {
         if (a == null) {
-            throw new NullPointerException("Массив пустой!");
+            throw new NullPointerException("Вместо коллекции передан null");
         }
 
         Object[] items = toArray();
@@ -141,20 +140,22 @@ public class MyHashTable<E> implements Collection<E> {
             lists[index] = null;
         }
 
-        if (lists[index] != null) {
-            size--;
-            modCount++;
+        int currentSize = size;
 
-            return lists[index].remove(o);
+        if (lists[index] != null) {
+            if (lists[index].remove(o)) {
+                size--;
+                modCount++;
+            }
         }
 
-        return false;
+        return currentSize != size;
     }
 
     @Override
     public boolean containsAll(Collection<?> c) {
         if (c == null) {
-            throw new NullPointerException("Пустая коллекция!");
+            throw new NullPointerException("Вместо коллекции передан null");
         }
 
         for (Object e : c) {
@@ -168,6 +169,10 @@ public class MyHashTable<E> implements Collection<E> {
 
     @Override
     public boolean addAll(Collection<? extends E> c) {
+        if (c == null) {
+            throw new NullPointerException("Вместо коллекции передан null");
+        }
+
         if (c.size() == 0) {
             return false;
         }
@@ -181,21 +186,21 @@ public class MyHashTable<E> implements Collection<E> {
 
     @Override
     public boolean removeAll(Collection<?> c) {
-        int currentSize = size;
-
         if (c == null) {
-            throw new NullPointerException("Передана пустая коллекция!");
+            throw new NullPointerException("Вместо коллекции передан null");
         }
 
         if (c.size() == 0) {
             return false;
         }
 
-        for (ArrayList<E> indexList : lists) {
-            if (indexList != null) {
-                size -= indexList.size();
-                indexList.removeAll(c);
-                size += indexList.size();
+        int currentSize = size;
+
+        for (ArrayList<E> list : lists) {
+            if (list != null) {
+                size -= list.size();
+                list.removeAll(c);
+                size += list.size();
             }
         }
 
@@ -217,16 +222,16 @@ public class MyHashTable<E> implements Collection<E> {
     @Override
     public boolean retainAll(Collection<?> c) {
         if (c == null) {
-            throw new NullPointerException("Передана пустая коллекция!");
+            throw new NullPointerException("Вместо коллекции передан null");
         }
 
         int currentSize = size;
 
-        for (ArrayList<E> indexList : lists) {
-            if (indexList != null) {
-                size -= indexList.size();
-                indexList.retainAll(c);
-                size += indexList.size();
+        for (ArrayList<E> list : lists) {
+            if (list != null) {
+                size -= list.size();
+                list.retainAll(c);
+                size += list.size();
             }
         }
 

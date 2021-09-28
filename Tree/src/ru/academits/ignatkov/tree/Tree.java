@@ -268,4 +268,33 @@ public class Tree<T> {
             }
         }
     }
+
+    public boolean contains(T data) {
+        if (root == null) {
+            return false;
+        }
+
+        TreeNode<T> currentNode = root;
+        int compareResult;
+
+        do {
+            compareResult = compare(data, currentNode.getData());
+
+            if (compareResult < 0) {
+                if (currentNode.getLeft() != null) {
+                    currentNode = currentNode.getLeft();
+                } else {
+                    return false;
+                }
+            } else if (compareResult > 0) {
+                if (currentNode.getRight() != null) {
+                    currentNode = currentNode.getRight();
+                } else {
+                    return false;
+                }
+            }
+        } while (compareResult != 0);
+
+        return true;
+    }
 }

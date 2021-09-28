@@ -19,7 +19,7 @@ public class Main {
         Integer deletedElementData = singlyLinkedList.delete(1);
         System.out.println("После удаления второго элемента список такой: " + singlyLinkedList + ". Удаленный элемент " + deletedElementData);
 
-        System.out.println("После удаления по значению 5 список такой. Значение было удалено - " + singlyLinkedList.delete(Integer.valueOf(5)));
+        System.out.println("После удаления по значению 5. Значение было удалено - " + singlyLinkedList.delete(Integer.valueOf(5)));
         System.out.println("Удалим то же значение ещё раз. Значение было удалено - " + singlyLinkedList.delete(Integer.valueOf(5)));
 
         Integer deletedFirstElementData = singlyLinkedList.deleteFirst();

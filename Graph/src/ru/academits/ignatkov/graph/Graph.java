@@ -13,7 +13,7 @@ public class Graph {
         int columnsCount = matrix[0].length;
 
         if (rowsCount != columnsCount) {
-            throw new UnsupportedOperationException("Матрица не квадратная. " +
+            throw new IllegalArgumentException("Матрица не квадратная. " +
                     "Размеры матрицы: " + rowsCount + "x" + columnsCount);
         }
         
@@ -25,28 +25,31 @@ public class Graph {
     }
 
     public void traverseWidth(IntConsumer consumer) {
-        boolean[] visited = new boolean[matrix.length];
+        boolean[] visitedNodes = new boolean[matrix.length];
 
         Queue<Integer> queue = new LinkedList<>();
-        queue.add(0);
-        visited[0] = true;
 
-        while (!queue.isEmpty()) {
-            int currentNode = queue.remove();
-            consumer.accept(currentNode);
-
-            for (int i = 1; i < matrix[currentNode].length; i++) {
-                if (matrix[currentNode][i] != 0 && !visited[i]) {
-                    queue.add(i);
-                    visited[i] = true;
-                }
+        for (int nodeIndex = 0; nodeIndex < matrix.length; nodeIndex++) {
+            if (visitedNodes[nodeIndex]) {
+                continue;
             }
 
-            if (queue.isEmpty()) {
-                for (int i = 1; i < visited.length; i++) {
-                    if (!visited[i]) {
+            queue.add(nodeIndex);
+
+            while (!queue.isEmpty()) {
+                int polledIndex = queue.poll();
+
+                if (visitedNodes[polledIndex]) {
+                    continue;
+                }
+
+                consumer.accept(polledIndex);
+
+                visitedNodes[polledIndex] = true;
+
+                for (int i = 0; i < matrix.length; i++) {
+                    if (i != polledIndex && matrix[polledIndex][i] > 0) {
                         queue.add(i);
-                        visited[i] = true;
                     }
                 }
             }

@@ -14,9 +14,11 @@ public class Main {
         tree.insert(5);
         tree.insert(4);
 
+        System.out.println("Is tree contain 3? " + tree.contains(3));
         System.out.println("getSize() = " + tree.getSize());
         tree.remove(3);
         System.out.println("getSize() = " + tree.getSize());
+        System.out.println("Is tree contain 3? " + tree.contains(3));
 
         tree.traverseDepth(print);
         tree.traverseDepthRecursion(print);
