@@ -9,6 +9,7 @@ public class Main {
         singlyLinkedList.addFirst(3);
         singlyLinkedList.add(1, 5);
         singlyLinkedList.add(1, 2);
+        singlyLinkedList.delete(3);
 
         System.out.println("Количество элементов списка: " + singlyLinkedList.getSize() + ". Вот они: " + singlyLinkedList);
         System.out.println("Первый элемент: " + singlyLinkedList.getFirst());

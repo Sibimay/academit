@@ -10,11 +10,13 @@ public class Graph {
 
     public Graph(int[][] matrix) {
         int rowsCount = matrix.length;
-        int columnsCount = matrix[0].length;
 
-        if (rowsCount != columnsCount) {
-            throw new IllegalArgumentException("Матрица не квадратная. " +
-                    "Размеры матрицы: " + rowsCount + "x" + columnsCount);
+        for (int[] ints : matrix) {
+            int columnsCount = ints.length;
+
+            if (rowsCount != columnsCount) {
+                throw new IllegalArgumentException("Матрица не квадратная. Размеры матрицы: " + rowsCount + "x" + columnsCount);
+            }
         }
         
         this.matrix = matrix;
@@ -57,7 +59,14 @@ public class Graph {
     }
 
     public void traverseDepthRecursion(IntConsumer consumer) {
-        traverseDepthRecursion(0, new boolean[matrix.length], consumer);
+        boolean[] visited = new boolean[matrix.length];
+        traverseDepthRecursion(0, visited, consumer);
+
+        for (int i = 1; i < visited.length; i++) {
+            if (!visited[i]) {
+                traverseDepthRecursion(i, visited, consumer);
+            }
+        }
     }
 
     private void traverseDepthRecursion(int currentNodeIndex, boolean[] visited, IntConsumer consumer) {
@@ -66,12 +75,6 @@ public class Graph {
 
         for (int i = 1; i < matrix[currentNodeIndex].length; i++) {
             if (matrix[currentNodeIndex][i] == 1 && !visited[i]) {
-                traverseDepthRecursion(i, visited, consumer);
-            }
-        }
-
-        for (int i = 1; i < visited.length; i++) {
-            if (!visited[i]) {
                 traverseDepthRecursion(i, visited, consumer);
             }
         }

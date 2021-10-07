@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="Fix mistakes">
-      <change afterPath="$PROJECT_DIR$/Temperature/Temperature.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/controller/ConverterController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/main/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/model/CelsiusScale.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/model/FahrenheitScale.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/model/KelvinScale.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/model/Scale.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/view/ConverterView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/src/ru/academits/ignatkov/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/src/ru/academits/ignatkov/graph/Graph.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Graph/src/ru/academits/ignatkov/graph_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/src/ru/academits/ignatkov/graph_main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HashTable/src/ru/academits/ignatkov/hash_table/MyHashTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/HashTable/src/ru/academits/ignatkov/hash_table/MyHashTable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list/SinglyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list/SinglyLinkedList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list_main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Tree/src/ru/academits/ignatkov/tree/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tree/src/ru/academits/ignatkov/tree/Tree.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -69,7 +66,7 @@
       <recent name="$PROJECT_DIR$/CSV" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main (1)">
+  <component name="RunManager" selected="Application.Main (4)">
     <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.main.Main" />
       <module name="Temperature" />
@@ -144,10 +141,10 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main (4)" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="Application.Main (5)" />
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main (2)" />
       </list>
     </recent_temporary>

@@ -43,38 +43,6 @@ public class Tree<T> {
         return ((Comparable<T>) data1).compareTo(data2);
     }
 
-    private TreeNode<T> getNode(T data) {
-        TreeNode<T> node = root;
-
-        while (node != null) {
-            int compareResult = compare(data, node.getData());
-
-            if (compareResult == 0) {
-                return node;
-            }
-
-            if (compareResult < 0) {
-                TreeNode<T> leftNode = node.getLeft();
-
-                if (leftNode != null) {
-                    node = leftNode;
-                } else {
-                    return null;
-                }
-            } else {
-                TreeNode<T> rightNode = node.getRight();
-
-                if (rightNode != null) {
-                    node = rightNode;
-                } else {
-                    return null;
-                }
-            }
-        }
-
-        return null;
-    }
-
     public void insert(T data) {
         if (root == null) {
             root = new TreeNode<>(data);

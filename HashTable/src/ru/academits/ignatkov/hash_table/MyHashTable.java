@@ -97,7 +97,7 @@ public class MyHashTable<E> implements Collection<E> {
     @Override
     public <E1> E1[] toArray(E1[] a) {
         if (a == null) {
-            throw new NullPointerException("Вместо коллекции передан null");
+            throw new NullPointerException("Вместо массива передан null");
         }
 
         Object[] items = toArray();
@@ -135,11 +135,6 @@ public class MyHashTable<E> implements Collection<E> {
     @Override
     public boolean remove(Object o) {
         int index = getIndex(o);
-
-        if (lists[index].size() == 0) {
-            lists[index] = null;
-        }
-
         int currentSize = size;
 
         if (lists[index] != null) {
