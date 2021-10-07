@@ -2,13 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="59535a87-5da6-49b3-8a2d-d3486149792b" name="Default Changelist" comment="Fix mistakes">
+      <change afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/temperature/model/Converter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/src/ru/academits/ignatkov/graph/Graph.java" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/src/ru/academits/ignatkov/graph/Graph.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Graph/src/ru/academits/ignatkov/graph_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Graph/src/ru/academits/ignatkov/graph_main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HashTable/src/ru/academits/ignatkov/hash_table/MyHashTable.java" beforeDir="false" afterPath="$PROJECT_DIR$/HashTable/src/ru/academits/ignatkov/hash_table/MyHashTable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list/SinglyLinkedList.java" beforeDir="false" afterPath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list/SinglyLinkedList.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list_main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/List/src/ru/academits/ignatkov/list_main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tree/src/ru/academits/ignatkov/tree/Tree.java" beforeDir="false" afterPath="$PROJECT_DIR$/Tree/src/ru/academits/ignatkov/tree/Tree.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/controller/ConverterController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/temperature_main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/model/CelsiusScale.java" beforeDir="false" afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/temperature/model/CelsiusScale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/model/FahrenheitScale.java" beforeDir="false" afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/temperature/model/FahrenheitScale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/model/KelvinScale.java" beforeDir="false" afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/temperature/model/KelvinScale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/model/Scale.java" beforeDir="false" afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/temperature/model/Scale.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/view/ConverterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/Temperature/src/ru/academits/ignatkov/temperature/view/ConverterView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -66,20 +68,7 @@
       <recent name="$PROJECT_DIR$/CSV" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Main (4)">
-    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.main.Main" />
-      <module name="Temperature" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="ru.academits.ignatkov.main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
+  <component name="RunManager" selected="Application.Main (1)">
     <configuration name="Main (2)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.tree_main.Main" />
       <module name="Tree" />
@@ -132,6 +121,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.academits.ignatkov.temperature_main.Main" />
+      <module name="Temperature" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.academits.ignatkov.temperature_main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <list>
       <item itemvalue="Application.Main (4)" />
       <item itemvalue="Application.Main (5)" />
@@ -141,10 +143,10 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main (4)" />
         <item itemvalue="Application.Main (5)" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="Application.Main (1)" />
         <item itemvalue="Application.Main (2)" />
       </list>
     </recent_temporary>

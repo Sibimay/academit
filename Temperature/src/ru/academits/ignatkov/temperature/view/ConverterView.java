@@ -1,7 +1,7 @@
-package ru.academits.ignatkov.view;
+package ru.academits.ignatkov.temperature.view;
 
-import ru.academits.ignatkov.controller.ConverterController;
-import ru.academits.ignatkov.model.Scale;
+import ru.academits.ignatkov.temperature.model.Converter;
+import ru.academits.ignatkov.temperature.model.Scale;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,24 +9,28 @@ import java.text.DecimalFormat;
 import java.util.Locale;
 
 public class ConverterView {
-    private final JFrame frame = new JFrame("Перевод температур");
-    private final JPanel panel = new JPanel(new GridBagLayout());
-    private final JTextField entryTemperature = new JTextField("", 10);
-    private final JButton calculateButton = new JButton("Рассчитать");
-    private final JTextField resultTemperature = new JTextField("", 10);
-    private final JButton clearButton = new JButton("Очистить");
-    private final Scale[] scales;
-    private JComboBox<Scale> inScales;
+    private JFrame frame;
+    private JPanel panel;
+    private JTextField entryTemperature;
+    private JButton calculateButton;
+    private JTextField resultTemperature;
+    private JButton clearButton;
+    private JComboBox<Scale> inputScales;
     private JComboBox<Scale> outScales;
+    private final Converter converter;
 
-    public ConverterView(Scale[] scales) {
-        this.scales = scales;
+    public ConverterView(Converter converter) {
+        this.converter = converter;
     }
 
     private void initFrame() {
         SwingUtilities.invokeLater(() -> {
+            frame = new JFrame("Перевод температур");
             frame.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+            panel = new JPanel(new GridBagLayout());
             panel.setPreferredSize(new Dimension(300, 250));
+
             frame.add(panel);
             frame.pack();
             frame.setLocationRelativeTo(null);
@@ -43,29 +47,35 @@ public class ConverterView {
             c.insets = new Insets(7, 5, 8, 5);
             panel.add(new JLabel("Выберите шкалу для ввода:"), c);
 
-            inScales = new JComboBox<>(scales);
+            inputScales = new JComboBox<>(converter.getScales());
             c.gridx = 3;
             c.gridy = 1;
-            panel.add(inScales, c);
+            panel.add(inputScales, c);
+            inputScales.setEnabled(true);
+            inputScales.setSelectedIndex(0);
 
             c.gridx = 0;
             c.gridy = 2;
             panel.add(new JLabel("Выберите шкалу для вывода:"), c);
 
-            outScales = new JComboBox<>(scales);
+            outScales = new JComboBox<>(converter.getScales());
             c.gridx = 3;
             c.gridy = 2;
             panel.add(outScales, c);
+            outScales.setEnabled(true);
+            outScales.setSelectedIndex(1);
 
             c.gridx = 0;
             c.gridy = 3;
             c.insets = new Insets(9, 5, 8, 5);
             panel.add(new JLabel("Введите значение температуры:"), c);
 
+            entryTemperature = new JTextField("", 10);
             c.gridx = 3;
             c.gridy = 3;
             panel.add(entryTemperature, c);
 
+            calculateButton = new JButton("Рассчитать");
             c.gridx = 0;
             c.gridy = 4;
             c.insets = new Insets(7, 80, 8, -25);
@@ -76,20 +86,24 @@ public class ConverterView {
             c.insets = new Insets(7, 5, 8, 5);
             panel.add(new JLabel("Результат:"), c);
 
+            resultTemperature = new JTextField("", 10);
             c.gridx = 3;
             c.gridy = 5;
             resultTemperature.setEditable(false);
             panel.add(resultTemperature, c);
 
+            clearButton = new JButton("Очистить");
             c.gridx = 0;
             c.gridy = 6;
             c.insets = new Insets(7, 80, 8, -25);
             panel.add(clearButton, c);
+
+            initEvents();
         });
     }
 
-    private Scale getInScale() {
-        return (Scale) inScales.getSelectedItem();
+    private Scale getInputScale() {
+        return (Scale) inputScales.getSelectedItem();
     }
 
     private Scale getOutScale() {
@@ -111,24 +125,17 @@ public class ConverterView {
     private void initEvents() {
         calculateButton.addActionListener(event -> {
             try {
-                Scale inScale = getInScale();
+                Scale inputScale = getInputScale();
                 Scale outScale = getOutScale();
-                double inTemperature = getEntryTemperature();
-                double outTemperature = new ConverterController().getResult(inScale, outScale, inTemperature);
+                double inputTemperature = getEntryTemperature();
+                double outTemperature = converter.getResult(inputScale, outScale, inputTemperature);
                 setResultTemperature(outTemperature);
-                inScales.setEnabled(false);
-                outScales.setEnabled(false);
-                entryTemperature.setEditable(false);
             } catch (NumberFormatException e) {
                 getErrorMessage();
             }
         });
 
         clearButton.addActionListener(event -> {
-            inScales.setEnabled(true);
-            inScales.setSelectedIndex(0);
-            outScales.setEnabled(true);
-            outScales.setSelectedIndex(0);
             entryTemperature.setEditable(true);
             entryTemperature.setText("");
             resultTemperature.setText("");
@@ -137,6 +144,5 @@ public class ConverterView {
 
     public void run() {
         initFrame();
-        initEvents();
     }
 }
