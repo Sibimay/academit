@@ -7,7 +7,7 @@ public class Converter {
         this.scales = scales;
     }
 
-    public double getResult(Scale inputScale, Scale outScale, double inputTemperature) {
+    public double getResultTemperature(Scale inputScale, Scale outScale, double inputTemperature) {
         double celsiusTemperature = inputScale.convertToCelsius(inputTemperature);
         return outScale.convertFromCelsius(celsiusTemperature);
     }

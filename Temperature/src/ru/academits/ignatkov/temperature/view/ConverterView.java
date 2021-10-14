@@ -118,7 +118,7 @@ public class ConverterView {
         resultTemperature.setText(DecimalFormat.getNumberInstance(Locale.ENGLISH).format(result));
     }
 
-    private void getErrorMessage() {
+    private void showErrorMessage() {
         JOptionPane.showMessageDialog(frame, "Введено не число или неверный формат числа", "Ошибка ввода", JOptionPane.ERROR_MESSAGE);
     }
 
@@ -128,10 +128,10 @@ public class ConverterView {
                 Scale inputScale = getInputScale();
                 Scale outScale = getOutScale();
                 double inputTemperature = getEntryTemperature();
-                double outTemperature = converter.getResult(inputScale, outScale, inputTemperature);
+                double outTemperature = converter.getResultTemperature(inputScale, outScale, inputTemperature);
                 setResultTemperature(outTemperature);
             } catch (NumberFormatException e) {
-                getErrorMessage();
+                showErrorMessage();
             }
         });
 
