@@ -149,14 +149,14 @@ public class SinglyLinkedList<E> {
         return copiedList;
     }
 
-    private static void checkIndex(int index, int capacity) {
+    private static void checkIndex(int index, int resultSize) {
         if (index < 0) {
             throw new IndexOutOfBoundsException("Указанный индекс меньше нуля. Индекс = " + index);
         }
 
-        if (index >= capacity) {
-            throw new IndexOutOfBoundsException("Указанный индекс больше вместимости списка." +
-                    " Индекс = " + index + ", вместимость списка = " + capacity);
+        if (index >= resultSize) {
+            throw new IndexOutOfBoundsException("Указанный индекс больше результирующего размера списка." +
+                    " Индекс = " + index + ", результирующий размер списка = " + resultSize);
         }
     }
 
